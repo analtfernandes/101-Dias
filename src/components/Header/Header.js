@@ -1,13 +1,13 @@
+import styled from 'styled-components';
 import Icons from '../Icons';
 
-import './Header.css';
 
 export default function Header() {
 
     return (
 
-        <header>
-            <div className='menu'>
+        <Wrapper>
+            <Progress>
                 <div>
                     <h1>Tempo</h1>
                     <span>0 / 960</span>
@@ -16,7 +16,7 @@ export default function Header() {
                     <h1>Dias</h1>
                     <span>1 / 101</span>
                 </div>
-            </div>
+            </Progress>
             <div>
                 <div>
                     <Icons type='create' />
@@ -39,6 +39,60 @@ export default function Header() {
                     <span>0 / 5</span>
                 </div>
             </div>
-        </header>
+        </Wrapper>
     );
 }
+
+const Wrapper = styled.header`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 20px;
+    background-color: rgb(72 52 27);
+    border: 3px solid rgb(36 22 5);
+    border-top: none;
+    border-radius: 0 0 15px 15px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    div {
+        display: flex;
+        align-items: center;
+    }
+
+    & > div {
+        width: 100%;
+        display: flex;
+        text-align: center;
+        align-items: center;
+        justify-content: space-evenly;
+        color: ghostwhite;
+    }
+
+    h1 {
+        font-weight: 600;
+        font-size: 14px;
+    }
+
+    span {
+        font-size: 16px;
+    }
+
+    ion-icon {
+        margin-right: 16px;
+    }
+`;
+
+const Progress = styled.div`
+    div {
+        height: 40px;
+        margin-bottom: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+`;

@@ -1,15 +1,17 @@
-import { useState } from 'react';
-import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
+import Main from '../Main/Main';
+import Footer from '../Footer/Footer';
 
-import './reset.css';
-import './App.css';
+import GlobalStyle from '../../assets/globalStyle/GlobalStyle';
+
 
 function App() {
 
   return (
     <>
+      <GlobalStyle />
       <Header />
+      <Main />
       <Footer />
     </>
   );
