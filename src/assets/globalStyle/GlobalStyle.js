@@ -134,7 +134,6 @@ const GlobalStyle = createGlobalStyle`
 
     /* My styles */
     body {
-        height: 100vh;
         background: radial-gradient(circle, rgba(50,50,50,1) 0%, rgba(0,0,0,1) 80%);
         font-family: 'Roboto', sans-serif;
     }

@@ -1,3 +1,9 @@
+import DayEvents from  './DayEvents'
+
 export default function Main () {
-    return <div></div>;
+    return (
+        <>
+            <DayEvents />
+        </>
+    );
 }
