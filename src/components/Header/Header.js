@@ -35,7 +35,7 @@ export default function Header() {
                     <span>50 / 50</span>
                 </div>
                 <div>
-                    <Icons type='medkit' />
+                    <Icons type='bandage' />
                     <span>0 / 5</span>
                 </div>
             </div>

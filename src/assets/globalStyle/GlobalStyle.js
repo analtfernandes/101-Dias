@@ -134,6 +134,7 @@ const GlobalStyle = createGlobalStyle`
 
     /* My styles */
     body {
+        height: 80vh;
         background: radial-gradient(circle, rgba(50,50,50,1) 0%, rgba(0,0,0,1) 80%);
         font-family: 'Roboto', sans-serif;
     }
@@ -142,12 +143,20 @@ const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
     }
 
+    .root {
+        height: 100%
+    }
+
     ion-icon {
         font-size: 20px;
     }
 
     h1 {
         font-family: 'Righteous', cursive;
+    }
+
+    b {
+        font-weight: 700;
     }
 `;
 
