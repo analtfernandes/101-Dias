@@ -1,8 +1,12 @@
 import styled from 'styled-components';
-import Icons from '../Icons';
+import { HeaderStatusContext } from '../../contexts';
+import { useContext } from 'react';
+
+import { Icons } from '../utils/';
 
 
 export default function Header() {
+    const { status } = useContext(HeaderStatusContext);
 
     return (
 
@@ -10,33 +14,33 @@ export default function Header() {
             <Progress>
                 <div>
                     <h1>Tempo</h1>
-                    <span>0 / 960</span>
+                    <span>{status.time} / 960</span>
                 </div>
                 <div>
                     <h1>Dias</h1>
-                    <span>1 / 101</span>
+                    <span>{status.day} / 101</span>
                 </div>
             </Progress>
             <div>
                 <div>
                     <Icons type='create' />
-                    <span>0</span>
+                    <span>{status.written}</span>
                 </div>
                 <div>
                     <Icons type='barbell-outline' />
-                    <span>0</span>
+                    <span>{status.physical}</span>
                 </div>
                 <div>
                     <Icons type='restaurant' />
-                    <span>0 / 10</span>
+                    <span>{status.hungry} / 10</span>
                 </div>
                 <div>
                     <Icons type='happy' />
-                    <span>50 / 50</span>
+                    <span>{status.mental} / 50</span>
                 </div>
                 <div>
                     <Icons type='bandage' />
-                    <span>0 / 5</span>
+                    <span>{status.unhealth} / 5</span>
                 </div>
             </div>
         </Wrapper>

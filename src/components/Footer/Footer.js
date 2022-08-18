@@ -1,14 +1,18 @@
 import styled from 'styled-components';
 
-const buttons = ['Escrever', 'Alimentar-se', 'Exercitar-se'];
+import Button from './Button'
+import arrayButtons from './Buttons';
+
 
 export default function Footer() {
+
+    const buttons = [...arrayButtons];
 
     return (
 
         <Wrapper>
             {buttons.map((button, index) => (
-                <Button key={index} className='footer-button'>{button}</Button>
+                <Button key={index} {...button} />
             ))}
         </Wrapper>
     );
@@ -29,27 +33,4 @@ const Wrapper = styled.footer`
     left: 0;
     right: 0;
     bottom: 0;
-`;
-
-const Button = styled.div`
-    width: 130px;
-    border-radius: 15px;
-    padding: 5px 0;
-    bottom: 0;
-    background-color: #744a2d;
-    border: 1px solid rgb(42 23 0);
-    box-shadow: 0 1px 4px 0 rgb(0 0 0 / 50%);
-    text-align: center;
-    font-size: 18px;
-    color: ghostwhite;
-
-    &:hover {
-        filter: brightness(0.8);
-        cursor: pointer;
-    }
-
-    &:active {
-        filter: brightness(0.8);
-        transform: translateY(1px);
-    }
 `;

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Icons from '../Icons';
+import { Icons } from '../utils';
 
 export default function Storage () {
     
