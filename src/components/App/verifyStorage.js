@@ -10,7 +10,8 @@ function verifyStorage ({ setStatus }) {
             physical: 0,
             hungry: 0,
             mental: 50,
-            unhealth: 0
+            unhealth: 0,
+            storage: []
         };
 
         localStorage.setItem('gameData', JSON.stringify(data));

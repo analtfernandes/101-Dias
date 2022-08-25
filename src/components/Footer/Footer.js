@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import Button from './Button'
-import arrayButtons from './Buttons';
+import { arrayButtons } from './Buttons';
 
 
 export default function Footer() {

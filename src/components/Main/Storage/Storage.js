@@ -1,12 +1,10 @@
 import styled from "styled-components";
-import { Icons } from '../utils';
+import { Icons } from '../../utils';
+import { arrayItems } from "./StorageItems";
 
 export default function Storage () {
     
-    const items = [
-        {type:'nutrition', name:'alimentos', qtd:30 },
-        {type:'medkit', name:'remédios e curativos', qtd:10 }
-    ];
+    const items = arrayItems;
 
     return (
         <Container>

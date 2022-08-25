@@ -1,12 +1,14 @@
-import { HeaderStatusContext } from '../../contexts';
+import GlobalStyle from '../../assets/globalStyle/GlobalStyle';
+import { useEffect, useState } from 'react';
+
+import { StatusContext } from '../../contexts';
 
 import verifyStorage from './verifyStorage';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
 import Footer from '../Footer/Footer';
 
-import GlobalStyle from '../../assets/globalStyle/GlobalStyle';
-import { useEffect, useState } from 'react';
+import ControlActions from '../ControlActions';
 
 
 function App() {
@@ -17,14 +19,15 @@ function App() {
   }, []);
 
   return (
-    <HeaderStatusContext.Provider value={{ status, setStatus }}>
+    <StatusContext.Provider value={{ status, setStatus }}>
 
       <GlobalStyle />
+      <ControlActions />
       <Header />
       <Main />
       <Footer />
       
-    </HeaderStatusContext.Provider>
+    </StatusContext.Provider>
   );
 }
 

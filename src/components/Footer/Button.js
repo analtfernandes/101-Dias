@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
 import { useContext } from 'react';
-import { HeaderStatusContext } from '../../contexts';
+import { StatusContext } from '../../contexts';
 
 import UpdateState from './UpdateState';
 
 
-export default function Button({ text, states, disabled = false }) {
-    const { status, setStatus } = useContext(HeaderStatusContext);
+export default function Button({ text, states, disabled }) {
+    const { status, setStatus } = useContext(StatusContext);
 
     function callUpdateStates () {
         if (text !== 'Dormir') {

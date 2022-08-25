@@ -1,5 +1,5 @@
-import HeaderStatusContext from "./HeaderStatusContext";
+import StatusContext from "./StatusContext";
 
 export {
-    HeaderStatusContext
+    StatusContext
 }

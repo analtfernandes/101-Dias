@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-import { HeaderStatusContext } from '../../contexts';
+import { StatusContext } from '../../contexts';
 import { useContext } from 'react';
 
 import { Icons } from '../utils/';
 
 
 export default function Header() {
-    const { status } = useContext(HeaderStatusContext);
+    const { status } = useContext(StatusContext);
 
     return (
 
