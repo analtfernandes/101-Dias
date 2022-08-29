@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import DayEvents from  './DayEvents';
+import DayEvents from  './DayEvents/DayEvents';
 import Storage from  './Storage/Storage';
 
 export default function Main () {

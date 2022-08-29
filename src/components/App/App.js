@@ -25,7 +25,7 @@ function App() {
 
       <GlobalStyle />
       <ControlActions fadeVisible={ fadeVisible } setFadeVisible={ setFadeVisible } />
-      <TransitionFade fadeVisible={ fadeVisible } setFadeVisible={ setFadeVisible } />
+      {/*<TransitionFade fadeVisible={ fadeVisible } setFadeVisible={ setFadeVisible } />*/}
       <Header />
       <Main />
       <Footer />

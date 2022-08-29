@@ -1,4 +1,4 @@
-import { Storage } from "../Main/Storage/StorageItems";
+import { changeStorage } from "../Main/Storage/StorageItems";
 
 
 function sort () {
@@ -44,7 +44,7 @@ function update_hungry ({ newStatus, status, value }) {
             newStatus.mental = status.mental + 1;
         }
         
-        Storage({ change:{ id:1, value:value } });
+        changeStorage({ change:{ id:1, value:value } });
     }
 }
 

@@ -1,10 +1,8 @@
 import styled from "styled-components";
-import { Icons } from '../utils/';
+import { Icons } from '../../utils';
+import { occorrences } from "./Occorrences";
 
 export default function DayEvents () {
-    const occorrences = [
-        {type:'sunny', text:'O dia começou'}
-    ];
 
     return (
         <>

@@ -5,7 +5,7 @@ let arrayItems = [
 ];
 
 
-function Storage ({ change, newItem }) {
+function changeStorage ({ change, newItem }) {
     if (change) {
         const itemChanged = arrayItems.find(item => item.id === change.id);
         itemChanged.qtd += change.value;
@@ -27,5 +27,5 @@ function Storage ({ change, newItem }) {
 
 export {
     arrayItems,
-    Storage
+    changeStorage
 }
