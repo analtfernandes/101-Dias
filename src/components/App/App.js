@@ -9,10 +9,12 @@ import Main from '../Main/Main';
 import Footer from '../Footer/Footer';
 
 import ControlActions from '../ControlActions';
+import { TransitionFade } from '../utils';
 
 
 function App() {
   const [status, setStatus] = useState({});
+  const [fadeVisible, setFadeVisible] = useState(true);
 
   useEffect(() => {
     verifyStorage({ setStatus });
@@ -22,7 +24,8 @@ function App() {
     <StatusContext.Provider value={{ status, setStatus }}>
 
       <GlobalStyle />
-      <ControlActions />
+      <ControlActions fadeVisible={ fadeVisible } setFadeVisible={ setFadeVisible } />
+      <TransitionFade fadeVisible={ fadeVisible } setFadeVisible={ setFadeVisible } />
       <Header />
       <Main />
       <Footer />
