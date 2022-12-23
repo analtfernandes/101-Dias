@@ -1,11 +1,10 @@
 import styled from "styled-components";
-import { useContext } from "react";
 
-import { StatusContext } from "../../contexts";
+import { useStatusContext } from "../../contexts";
 import { Icons } from "../utils/";
 
 export default function Header() {
-	const { status } = useContext(StatusContext);
+	const { status } = useStatusContext();
 
 	return (
 		<Wrapper>
@@ -25,7 +24,7 @@ export default function Header() {
 					<span>{status.written}</span>
 				</div>
 				<div>
-					<Icons type="barbell-outline" />
+					<Icons type="barbell" />
 					<span>{status.physical}</span>
 				</div>
 				<div>
@@ -73,6 +72,7 @@ const Wrapper = styled.header`
 		align-items: center;
 		justify-content: space-evenly;
 		color: ghostwhite;
+		font-size: 18px;
 	}
 
 	h1 {
@@ -82,10 +82,6 @@ const Wrapper = styled.header`
 
 	span {
 		font-size: 16px;
-	}
-
-	ion-icon {
-		margin-right: 16px;
 	}
 `;
 

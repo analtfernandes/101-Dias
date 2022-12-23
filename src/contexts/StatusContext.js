@@ -1,8 +1,9 @@
 import { createContext, useEffect } from "react";
 import { useStatus } from "../components/hooks/useStatus";
 import verifyStorage from "../components/App/verifyStorage";
+import { useContext } from "react";
 
-export const StatusContext = createContext();
+const StatusContext = createContext();
 
 export function StatusContextProvider({ children }) {
 	const { status, setStatus, updateStatus } = useStatus();
@@ -17,4 +18,12 @@ export function StatusContextProvider({ children }) {
 			{children}
 		</StatusContext.Provider>
 	);
+}
+
+export function useStatusContext() {
+	const context = useContext(StatusContext);
+
+	if (!context) throw new Error("Esse contexto não está disponível.");
+
+	return context;
 }

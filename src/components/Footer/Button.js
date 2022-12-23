@@ -1,10 +1,9 @@
 import styled from "styled-components";
 
-import { useContext } from "react";
-import { StatusContext } from "../../contexts";
+import { useStatusContext } from "../../contexts";
 
 export default function Button({ text, states, disabled }) {
-	const { updateStatus } = useContext(StatusContext);
+	const { updateStatus } = useStatusContext();
 
 	function updateStatusFunction() {
 		if (text !== "Dormir") {

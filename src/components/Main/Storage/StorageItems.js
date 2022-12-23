@@ -1,6 +1,6 @@
 
 let arrayItems = [
-    {id:1, type:'nutrition', name:'alimentos', qtd:30 },
+    {id:1, type:'food', name:'alimentos', qtd:30 },
     {id:2, type:'medkit', name:'remédios e curativos', qtd:5 }
 ];
 

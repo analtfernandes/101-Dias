@@ -1,5 +1,4 @@
-import { useContext } from "react";
-import { StatusContext } from "../../contexts";
+import { useStatusContext } from "../../contexts";
 
 let arrayButtons = [
 	{
@@ -30,7 +29,7 @@ let arrayButtons = [
 ];
 
 function Buttons() {
-	const { status } = useContext(StatusContext);
+	const { status } = useStatusContext();
 
 	if (status.time === 960) {
 		arrayButtons = arrayButtons.map((button) => ({
