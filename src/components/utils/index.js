@@ -1,7 +1,2 @@
-import Icons from './Icons';
-import TransitionFade from './TransitionFade';
-
-export {
-    Icons,
-    TransitionFade
-}
+export * from "./Icons";
+export * from "./TransitionFade";

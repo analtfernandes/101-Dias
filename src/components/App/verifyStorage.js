@@ -1,24 +1,22 @@
+function verifyStorage() {
+	const storageData = localStorage.getItem("gameData");
 
-function verifyStorage ({ setStatus }) {
-    let storageData = localStorage.getItem('gameData');
+	if (!storageData) {
+		const data = {
+			time: 0,
+			day: 1,
+			written: 0,
+			physical: 0,
+			hungry: 0,
+			mental: 50,
+			unhealth: 0,
+			storage: [],
+		};
 
-    if (!storageData) {
-        const data = {
-            time: 0,
-            day: 1,
-            written: 0,
-            physical: 0,
-            hungry: 0,
-            mental: 50,
-            unhealth: 0,
-            storage: []
-        };
+		return data;
+	}
 
-        localStorage.setItem('gameData', JSON.stringify(data));
-        storageData = localStorage.getItem('gameData');
-    }
-
-    setStatus(JSON.parse(storageData));
+	return JSON.parse(storageData);
 }
 
 export default verifyStorage;

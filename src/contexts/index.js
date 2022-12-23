@@ -1,5 +1,1 @@
-import StatusContext from "./StatusContext";
-
-export {
-    StatusContext
-}
+export * from "./StatusContext";

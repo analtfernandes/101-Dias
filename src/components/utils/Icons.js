@@ -11,10 +11,10 @@ happy
 sad
 */
 
-export default function Icons ({ type }) {
-    if (type.length > 0) {
-        return <ion-icon name={type}></ion-icon>;
-    };
+export function Icons({ type }) {
+	if (type.length > 0) {
+		return <ion-icon name={type}></ion-icon>;
+	}
 
-    return <ion-icon name='close-circle' color='danger'></ion-icon>;
+	return <ion-icon name="close-circle" color="danger"></ion-icon>;
 }
