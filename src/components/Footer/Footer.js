@@ -1,10 +1,10 @@
 import styled from "styled-components";
+import { useButtonContext } from "../../contexts";
 
 import Button from "./Button";
-import { arrayButtons } from "./Buttons";
 
 export default function Footer() {
-	const buttons = [...arrayButtons];
+	const { buttons } = useButtonContext();
 
 	return (
 		<Wrapper>

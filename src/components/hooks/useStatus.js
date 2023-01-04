@@ -99,7 +99,7 @@ function reducer(status, action) {
 	if (action.do === "update") {
 		const functionName = `update_${action.state}`;
 		const updatedStatus = statesFunctions[functionName]({
-			status: status,
+			status,
 			value: action.value,
 		});
 

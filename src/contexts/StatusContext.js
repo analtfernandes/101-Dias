@@ -1,7 +1,6 @@
-import { createContext, useEffect } from "react";
+import { createContext, useEffect, useContext } from "react";
 import { useStatus } from "../components/hooks/useStatus";
 import verifyStorage from "../components/App/verifyStorage";
-import { useContext } from "react";
 
 const StatusContext = createContext();
 

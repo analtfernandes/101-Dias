@@ -6,10 +6,8 @@ export default function Button({ text, states, disabled }) {
 	const { updateStatus } = useStatusContext();
 
 	function updateStatusFunction() {
-		if (text !== "Dormir") {
-			for (let i = 0; i < states.length; i++) {
-				updateStatus({ state: states[i].state, value: states[i].value });
-			}
+		for (let i = 0; i < states.length; i++) {
+			updateStatus({ state: states[i].state, value: states[i].value });
 		}
 	}
 
