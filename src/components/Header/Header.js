@@ -8,6 +8,14 @@ export default function Header() {
 
 	return (
 		<Wrapper>
+			<Time>
+				{status.time <= 600 && <Icons type="sunny" />}
+				{status.time > 600 && status.time <= 780 && (
+					<Icons type="sunset" fontSize={22} />
+				)}
+				{status.time > 780 && <Icons type="moon" />}
+			</Time>
+
 			<Progress>
 				<div>
 					<h1>Tempo</h1>
@@ -18,6 +26,7 @@ export default function Header() {
 					<span>{status.day} / 101</span>
 				</div>
 			</Progress>
+
 			<div>
 				<div>
 					<Icons type="create" />
@@ -92,5 +101,16 @@ const Progress = styled.div`
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
+	}
+`;
+
+const Time = styled.div`
+	&& {
+		width: fit-content;
+		position: fixed;
+		top: 10px;
+		left: 20px;
+		color: ghostwhite;
+		font-size: 18px;
 	}
 `;

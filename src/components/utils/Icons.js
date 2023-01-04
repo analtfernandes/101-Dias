@@ -33,12 +33,12 @@ const ICONS = {
 	close: AiFillCloseCircle,
 };
 
-export function Icons({ type }) {
+export function Icons({ type, ...otherProps }) {
 	const Icon = ICONS[type];
 
 	if (!Icon) {
 		return <AiFillCloseCircle color="red" style={{ marginRight: 10 }} />;
 	}
 
-	return <Icon style={{ marginRight: 10 }} />;
+	return <Icon style={{ marginRight: 10 }} {...otherProps} />;
 }
