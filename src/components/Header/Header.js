@@ -1,19 +1,57 @@
 import styled from "styled-components";
 
 import { useStatusContext } from "../../contexts";
+import { ICONS_NAMES } from "../enums";
 import { Icons } from "../utils/";
 
 export default function Header() {
-	const { status } = useStatusContext();
+	const { status, statusMap } = useStatusContext();
+	const statusKeys = Object.keys(status);
+
+	function getTime(time) {
+		const endDayTime = 600;
+		const startNightTime = 780;
+
+		if (time === "isDay") return status.time <= endDayTime;
+		if (time === "isSunset") {
+			return status.time > endDayTime && status.time <= startNightTime;
+		}
+		if (time === "isNight") return status.time > startNightTime;
+
+		return false;
+	}
+
+	function getStatus({ statusKey, index }) {
+		if (!statusMap.has(statusKey)) return;
+
+		const currentStatus = statusMap.get(statusKey);
+		const value = status[statusKey];
+		const content = `${value}${
+			currentStatus.maxValue ? ` / ${currentStatus.maxValue}` : ""
+		}`;
+		let statusIcon = currentStatus.icon;
+
+		if (statusKey === "mental") {
+			statusIcon =
+				value <= 25 ? currentStatus.icons.sad : currentStatus.icons.happy;
+		}
+
+		return (
+			<div key={index}>
+				<Icons type={statusIcon} />
+				<span>{content}</span>
+			</div>
+		);
+	}
 
 	return (
 		<Wrapper>
 			<Time>
-				{status.time <= 600 && <Icons type="sunny" />}
-				{status.time > 600 && status.time <= 780 && (
-					<Icons type="sunset" fontSize={22} />
+				{getTime("isDay") && <Icons type={ICONS_NAMES.sunny} />}
+				{getTime("isSunset") && (
+					<Icons type={ICONS_NAMES.sunset} fontSize={22} />
 				)}
-				{status.time > 780 && <Icons type="moon" />}
+				{getTime("isNight") && <Icons type={ICONS_NAMES.moon} />}
 			</Time>
 
 			<Progress>
@@ -28,26 +66,7 @@ export default function Header() {
 			</Progress>
 
 			<div>
-				<div>
-					<Icons type="create" />
-					<span>{status.written}</span>
-				</div>
-				<div>
-					<Icons type="barbell" />
-					<span>{status.physical}</span>
-				</div>
-				<div>
-					<Icons type="restaurant" />
-					<span>{status.hungry} / 10</span>
-				</div>
-				<div>
-					<Icons type="happy" />
-					<span>{status.mental} / 50</span>
-				</div>
-				<div>
-					<Icons type="bandage" />
-					<span>{status.unhealth} / 5</span>
-				</div>
+				{statusKeys.map((statusKey, index) => getStatus({ statusKey, index }))}
 			</div>
 		</Wrapper>
 	);

@@ -15,22 +15,24 @@ import {
 	IoLibrary,
 } from "react-icons/io5";
 
+import { ICONS_NAMES } from "../enums";
+
 const ICONS = {
-	medkit: FaMedkit,
-	bandage: IoBandage,
-	create: IoCreate,
-	book: IoBook,
-	library: IoLibrary,
-	barbell: IoBarbellOutline,
-	restaurant: IoRestaurant,
-	food: GiCannedFish,
-	happy: IoHappy,
-	sad: IoSad,
-	sunny: IoSunny,
-	sunset: GiSunset,
-	moon: IoMoon,
-	paw: IoPaw,
-	close: AiFillCloseCircle,
+	[ICONS_NAMES.medkit]: FaMedkit,
+	[ICONS_NAMES.bandage]: IoBandage,
+	[ICONS_NAMES.create]: IoCreate,
+	[ICONS_NAMES.book]: IoBook,
+	[ICONS_NAMES.library]: IoLibrary,
+	[ICONS_NAMES.barbell]: IoBarbellOutline,
+	[ICONS_NAMES.restaurant]: IoRestaurant,
+	[ICONS_NAMES.food]: GiCannedFish,
+	[ICONS_NAMES.happy]: IoHappy,
+	[ICONS_NAMES.sad]: IoSad,
+	[ICONS_NAMES.sunny]: IoSunny,
+	[ICONS_NAMES.sunset]: GiSunset,
+	[ICONS_NAMES.moon]: IoMoon,
+	[ICONS_NAMES.paw]: IoPaw,
+	[ICONS_NAMES.close]: AiFillCloseCircle,
 };
 
 export function Icons({ type, ...otherProps }) {

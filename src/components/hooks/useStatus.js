@@ -1,4 +1,5 @@
 import { useReducer } from "react";
+import { statusMap } from "../../database";
 
 function sort() {
 	return Math.random() - 0.5;
@@ -121,7 +122,7 @@ function useStatus(initialState = {}) {
 		return dispatch({ do: "update", state, value });
 	}
 
-	return { status, setStatus, updateStatus };
+	return { status, statusMap, setStatus, updateStatus };
 }
 
 export { useStatus };
