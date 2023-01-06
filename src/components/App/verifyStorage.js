@@ -13,6 +13,8 @@ function verifyStorage() {
 			storage: [],
 		};
 
+		localStorage.setItem("gameData", JSON.stringify(data));
+
 		return data;
 	}
 

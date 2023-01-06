@@ -1,12 +1,13 @@
 import { useReducer } from "react";
 import { useStatusContext } from "../../contexts";
 import { buttonsMap } from "../../database";
+import { STATUS_KEYS } from "../enums";
 
 function reducer(buttons, action) {
 	if (action.do === "add") {
 		const newButton = buttonsMap.find(({ key }) => key === action.key);
 
-		if (action.key === "pet") {
+		if (action.key === STATUS_KEYS.pet) {
 			newButton.text = action.text;
 		}
 
@@ -21,7 +22,7 @@ function reducer(buttons, action) {
 
 	if (action.do === "set_sleep_time") {
 		const updatedButtons = buttons.map((button) => {
-			if (button.key === "sleep") {
+			if (button.key === STATUS_KEYS.sleep) {
 				return {
 					...button,
 					disabled: false,
@@ -39,7 +40,7 @@ function reducer(buttons, action) {
 
 	if (action.do === "set_wake_time") {
 		const updatedButtons = buttons.map((button) => {
-			if (button.key !== "sleep") {
+			if (button.key !== STATUS_KEYS.sleep) {
 				return {
 					...button,
 					disabled: false,
@@ -59,12 +60,18 @@ function reducer(buttons, action) {
 function getInitialButtons() {
 	const status = JSON.parse(localStorage.getItem("gameData"));
 
-	const currentButtons = buttonsMap.filter(
-		({ key }) => status.hasOwnProperty(key) || key === "sleep"
-	);
+	const currentButtons = buttonsMap.filter(({ key }) => {
+		const isBasicButton =
+			key === STATUS_KEYS.written ||
+			key === STATUS_KEYS.hungry ||
+			key === STATUS_KEYS.physical ||
+			key === STATUS_KEYS.sleep;
 
-	if (status.pet) {
-		const pet = currentButtons.find(({ key }) => key === "pet");
+		return status?.hasOwnProperty(key) || isBasicButton;
+	});
+
+	if (status?.pet) {
+		const pet = currentButtons.find(({ key }) => key === STATUS_KEYS.pet);
 		pet.text = `Brincar com ${status.pet.name}`;
 	}
 
@@ -91,8 +98,8 @@ function useButtons() {
 		return dispatch({ do: "set_wake_time" });
 	}
 
-	if (status.time === 960 && buttons[0].disabled === false) setSleepTime();
-	if (status.time === 0 && buttons[0].disabled === true) setWakeTime();
+	if (status.time === 960 && buttons[0]?.disabled === false) setSleepTime();
+	if (status.time === 0 && buttons[0]?.disabled === true) setWakeTime();
 
 	return { buttons, addButton, removeButton };
 }

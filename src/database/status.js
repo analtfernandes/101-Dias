@@ -1,4 +1,4 @@
-import { ICONS_NAMES } from "../components/enums";
+import { ICONS_NAMES, STATUS_KEYS } from "../components/enums";
 
 function freezeMap(map) {
 	const action = () => {
@@ -12,7 +12,7 @@ function freezeMap(map) {
 
 const statusMap = new Map([
 	[
-		"hungry",
+		STATUS_KEYS.hungry,
 		{
 			initial: 0,
 			maxValue: 10,
@@ -20,7 +20,7 @@ const statusMap = new Map([
 		},
 	],
 	[
-		"mental",
+		STATUS_KEYS.mental,
 		{
 			initial: 50,
 			maxValue: 50,
@@ -31,14 +31,14 @@ const statusMap = new Map([
 		},
 	],
 	[
-		"physical",
+		STATUS_KEYS.physical,
 		{
 			initial: 0,
 			icon: ICONS_NAMES.barbell,
 		},
 	],
 	[
-		"unhealth",
+		STATUS_KEYS.unhealth,
 		{
 			initial: 0,
 			maxValue: 5,
@@ -46,7 +46,7 @@ const statusMap = new Map([
 		},
 	],
 	[
-		"written",
+		STATUS_KEYS.written,
 		{
 			initial: 0,
 			icon: ICONS_NAMES.create,

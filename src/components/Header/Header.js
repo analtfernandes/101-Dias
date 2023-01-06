@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import { useStatusContext } from "../../contexts";
-import { ICONS_NAMES } from "../enums";
+import { ICONS_NAMES, STATUS_KEYS } from "../enums";
 import { Icons } from "../utils/";
 
 export default function Header() {
@@ -31,7 +31,7 @@ export default function Header() {
 		}`;
 		let statusIcon = currentStatus.icon;
 
-		if (statusKey === "mental") {
+		if (statusKey === STATUS_KEYS.mental) {
 			statusIcon =
 				value <= 25 ? currentStatus.icons.sad : currentStatus.icons.happy;
 		}
