@@ -1,51 +1,10 @@
 import { useReducer } from "react";
 import { useStatusContext } from "../../contexts";
-
-const arrayButtons = [
-	{
-		key: "written",
-		text: "Escrever",
-		states: [
-			{ state: "time", value: 1 },
-			{ state: "written", value: 1 },
-		],
-		disabled: false,
-	},
-	{
-		key: "hungry",
-		text: "Alimentar-se",
-		states: [{ state: "hungry", value: -5 }],
-		disabled: false,
-	},
-	{
-		key: "physical",
-		text: "Exercitar-se",
-		states: [
-			{ state: "time", value: 1 },
-			{ state: "physical", value: 1 },
-		],
-		disabled: false,
-	},
-	{
-		key: "pet",
-		text: "",
-		states: [
-			{ state: "time", value: 1 },
-			{ state: "pet", value: 1 },
-		],
-		disabled: false,
-	},
-	{
-		key: "sleep",
-		text: "Dormir",
-		states: [],
-		disabled: true,
-	},
-];
+import { buttonsMap } from "../../database";
 
 function reducer(buttons, action) {
 	if (action.do === "add") {
-		const newButton = arrayButtons.find(({ key }) => key === action.key);
+		const newButton = buttonsMap.find(({ key }) => key === action.key);
 
 		if (action.key === "pet") {
 			newButton.text = action.text;
@@ -100,7 +59,7 @@ function reducer(buttons, action) {
 function getInitialButtons() {
 	const status = JSON.parse(localStorage.getItem("gameData"));
 
-	const currentButtons = arrayButtons.filter(
+	const currentButtons = buttonsMap.filter(
 		({ key }) => status.hasOwnProperty(key) || key === "sleep"
 	);
 
