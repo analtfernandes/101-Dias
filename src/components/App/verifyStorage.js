@@ -1,3 +1,6 @@
+import { storageMap } from "../../database";
+import { STORAGE_KEYS } from "../enums";
+
 function verifyStorage() {
 	const storageData = localStorage.getItem("gameData");
 
@@ -10,7 +13,18 @@ function verifyStorage() {
 			hungry: 0,
 			mental: 50,
 			unhealth: 0,
-			storage: [],
+			storage: [
+				{
+					key: STORAGE_KEYS.food,
+					description: storageMap[STORAGE_KEYS.food].description,
+					quantity: storageMap[STORAGE_KEYS.food].initialQuantity,
+				},
+				{
+					key: STORAGE_KEYS.health,
+					description: storageMap[STORAGE_KEYS.health].description,
+					quantity: storageMap[STORAGE_KEYS.health].initialQuantity,
+				},
+			],
 		};
 
 		localStorage.setItem("gameData", JSON.stringify(data));

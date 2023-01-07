@@ -1,21 +1,21 @@
 import styled from "styled-components";
+import { useStorageContext } from "../../../contexts/StorageContext";
 import { Icons } from "../../utils";
-import { arrayItems } from "./StorageItems";
 
 export default function Storage() {
-	const items = arrayItems;
+	const { storage } = useStorageContext();
 
 	return (
 		<Container>
 			<h2>Armazém</h2>
 
-			{items.map(({ type, name, qtd }, index) => (
+			{storage.map(({ icon, description, quantity }, index) => (
 				<Item key={index}>
 					<span>
-						<Icons type={type} />
-						{name}
+						<Icons type={icon} />
+						{description}
 					</span>
-					<b>{qtd}</b>
+					<b>{quantity}</b>
 				</Item>
 			))}
 		</Container>

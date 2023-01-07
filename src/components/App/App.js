@@ -1,7 +1,11 @@
 import GlobalStyle from "../../assets/globalStyle/GlobalStyle";
 import { useState } from "react";
 
-import { StatusContextProvider, ButtonContextProvider } from "../../contexts";
+import {
+	StatusContextProvider,
+	ButtonContextProvider,
+	StorageContextProvider,
+} from "../../contexts";
 import { TransitionFade } from "../utils";
 
 import Header from "../Header/Header";
@@ -14,12 +18,14 @@ function App() {
 	return (
 		<StatusContextProvider>
 			<ButtonContextProvider>
-				<GlobalStyle />
+				<StorageContextProvider>
+					<GlobalStyle />
 
-				{/*<TransitionFade fadeVisible={ fadeVisible } setFadeVisible={ setFadeVisible } />*/}
-				<Header />
-				<Main />
-				<Footer />
+					{/*<TransitionFade fadeVisible={ fadeVisible } setFadeVisible={ setFadeVisible } />*/}
+					<Header />
+					<Main />
+					<Footer />
+				</StorageContextProvider>
 			</ButtonContextProvider>
 		</StatusContextProvider>
 	);
