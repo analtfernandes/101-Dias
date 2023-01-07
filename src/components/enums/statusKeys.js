@@ -3,6 +3,7 @@ const STATUS_KEYS = Object.freeze({
 	mental: "mental",
 	physical: "physical",
 	unhealth: "unhealth",
+	read: "read",
 	written: "written",
 	sleep: "sleep",
 	pet: "pet",

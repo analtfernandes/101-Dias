@@ -16,6 +16,7 @@ const statusMap = new Map([
 		{
 			initial: 0,
 			maxValue: 10,
+			description: 'fome',
 			icon: ICONS_NAMES.restaurant,
 		},
 	],
@@ -24,6 +25,7 @@ const statusMap = new Map([
 		{
 			initial: 50,
 			maxValue: 50,
+			description: 'saúde mental',
 			icons: {
 				happy: ICONS_NAMES.happy,
 				sad: ICONS_NAMES.sad,
@@ -34,6 +36,7 @@ const statusMap = new Map([
 		STATUS_KEYS.physical,
 		{
 			initial: 0,
+			description: 'saúde física',
 			icon: ICONS_NAMES.barbell,
 		},
 	],
@@ -42,6 +45,7 @@ const statusMap = new Map([
 		{
 			initial: 0,
 			maxValue: 5,
+			description: 'saúde',
 			icon: ICONS_NAMES.bandage,
 		},
 	],
@@ -49,6 +53,7 @@ const statusMap = new Map([
 		STATUS_KEYS.written,
 		{
 			initial: 0,
+			description: 'escrita',
 			icon: ICONS_NAMES.create,
 		},
 	],

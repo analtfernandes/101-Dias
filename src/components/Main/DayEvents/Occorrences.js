@@ -1,14 +1,7 @@
-const occorrences = [
-    {type:'sunny', text:'O dia começou'}
-];
+const occorrences = [{ icon: "sunny", text: "O dia começou" }];
 
-
-function addEvent ({ type, text }) {
-    occorrences.push({ type, text });
+function addEvent({ icon, text }) {
+	occorrences.push({ icon, text });
 }
 
-
-export {
-    occorrences,
-    addEvent
-}
+export { occorrences, addEvent };
