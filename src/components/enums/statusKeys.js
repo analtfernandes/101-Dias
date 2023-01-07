@@ -7,6 +7,7 @@ const STATUS_KEYS = Object.freeze({
 	sleep: "sleep",
 	pet: "pet",
 	time: "time",
+	day: "day",
 });
 
 export { STATUS_KEYS };

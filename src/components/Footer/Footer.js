@@ -3,13 +3,13 @@ import { useButtonContext } from "../../contexts";
 
 import Button from "./Button";
 
-export default function Footer() {
+export default function Footer({ setFadeConfig }) {
 	const { buttons } = useButtonContext();
 
 	return (
 		<Wrapper>
 			{buttons.map((button, index) => (
-				<Button key={index} {...button} />
+				<Button key={index} {...button} buttonKey={button.key} setFadeConfig={ setFadeConfig }/>
 			))}
 		</Wrapper>
 	);

@@ -13,7 +13,11 @@ import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 
 function App() {
-	const [fadeVisible, setFadeVisible] = useState(true);
+	const [fadeConfig, setFadeConfig] = useState({
+		isVisible: true,
+		display: false, // default true
+		timeout: 500,
+	});
 
 	return (
 		<StatusContextProvider>
@@ -21,10 +25,14 @@ function App() {
 				<StorageContextProvider>
 					<GlobalStyle />
 
-					{/*<TransitionFade fadeVisible={ fadeVisible } setFadeVisible={ setFadeVisible } />*/}
+					<TransitionFade
+						fadeConfig={fadeConfig}
+						setFadeConfig={setFadeConfig}
+					/>
+
 					<Header />
 					<Main />
-					<Footer />
+					<Footer setFadeConfig={setFadeConfig} />
 				</StorageContextProvider>
 			</ButtonContextProvider>
 		</StatusContextProvider>

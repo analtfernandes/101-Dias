@@ -10,6 +10,11 @@ function update_time({ status, value }) {
 	return { time };
 }
 
+function update_day({ status, value }) {
+	const day = status.day + value;
+	return { day };
+}
+
 function update_written({ status, value }) {
 	const sortNumber = sort();
 
@@ -84,6 +89,7 @@ function update_mental({ status, value }) {
 
 const statesFunctions = {
 	update_time,
+	update_day,
 	update_written,
 	update_hungry,
 	update_physical,

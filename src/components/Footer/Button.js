@@ -1,9 +1,17 @@
 import styled from "styled-components";
 
 import { useStatusContext } from "../../contexts";
+import { STATUS_KEYS } from "../enums";
 
-export default function Button({ text, states, disabled }) {
+export default function Button({
+	text,
+	states,
+	disabled,
+	buttonKey: key,
+	setFadeConfig,
+}) {
 	const { updateStatus } = useStatusContext();
+	const isSleepButton = key === STATUS_KEYS.sleep;
 
 	function updateStatusFunction() {
 		for (let i = 0; i < states.length; i++) {
@@ -11,8 +19,34 @@ export default function Button({ text, states, disabled }) {
 		}
 	}
 
+	function sleep() {
+		setFadeConfig({
+			await: true,
+			display: true,
+			custom: true,
+		});
+
+		setTimeout(() => {
+			updateStatus({ state: STATUS_KEYS.time, value: -960 });
+			updateStatus({ state: STATUS_KEYS.day, value: 1 });
+		}, 1500);
+
+		setTimeout(() => {
+			setFadeConfig({
+				await: true,
+				display: true,
+				isVisible: true,
+				custom: true,
+				timeout: 1000,
+			});
+		}, 3000);
+	}
+
 	return (
-		<Wrapper disabled={disabled} onClick={updateStatusFunction}>
+		<Wrapper
+			disabled={disabled}
+			onClick={isSleepButton ? sleep : updateStatusFunction}
+		>
 			{text}
 		</Wrapper>
 	);
