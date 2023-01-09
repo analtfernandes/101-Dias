@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { useStatusContext } from "../../../contexts/StatusContext";
-import { events } from "../../../database/events";
+import { choiceEvents, events } from "../../../database/events";
 import { MODAL_TYPES } from "../../enums";
 
 import { Modal } from "./Modal";
@@ -11,7 +11,14 @@ export function Tracking() {
 	const eventData = useRef({});
 
 	useEffect(() => {
-		if (!events[status.day]) return;
+		if (!events[status.day] && !choiceEvents[status.day]) return;
+
+		eventData.current = choiceEvents[status.day][status.time];
+
+		if (eventData.current) {
+			setModalConfig({ isOpen: true, type: MODAL_TYPES.choiceEvent });
+			return;
+		}
 
 		eventData.current = events[status.day][status.time];
 

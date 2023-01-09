@@ -1,18 +1,30 @@
+import { MODAL_TYPES } from "../../enums";
 import { Buttons } from "./Modal";
 
-export function ChoiceEvent({ closeModal }) {
-	function closeChoiceEventModal() {
-		closeModal();
+export function ChoiceEvent({ eventData, closeModal }) {
+	function closeChoiceEventModal({ event }) {
+		let config;
+
+		if (event) {
+			config = { isOpen: true, type: MODAL_TYPES.event, data: event };
+		}
+
+		closeModal(config);
 	}
 
 	return (
 		<>
-			<p>Você ouviu um barulho vindo do porão.</p>
-			<p>O que fazer?</p>
+			<h1>{eventData.title}</h1>
 
-			<Buttons>
-				<button onClick={closeChoiceEventModal}>Investigar</button>
-				<button onClick={closeChoiceEventModal}>Ignorar</button>
+			<p>{eventData.description}</p>
+			<p style={{ marginTop: "10px" }}>O que fazer?</p>
+
+			<Buttons marginTop="35px">
+				{eventData.buttons.map(({ text, onClick }, index) => (
+					<button key={index} onClick={() => closeChoiceEventModal(onClick)}>
+						{text}
+					</button>
+				))}
 			</Buttons>
 		</>
 	);

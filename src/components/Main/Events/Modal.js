@@ -25,7 +25,7 @@ export function Modal({ modalConfig, setModalConfig, eventData }) {
 	return (
 		<ModalStyle style={customReactModalStyle} isOpen={modalConfig.isOpen}>
 			{modalConfig.type === MODAL_TYPES.choiceEvent && (
-				<ChoiceEvent closeModal={closeModal} />
+				<ChoiceEvent closeModal={closeModal} eventData={eventData} />
 			)}
 
 			{modalConfig.type === MODAL_TYPES.event && (
@@ -52,6 +52,11 @@ const ModalStyle = styled(ReactModal)`
 	font-size: 18px;
 	font-family: "Roboto", sans-serif;
 
+	h1 {
+		margin: 0 auto 20px;
+		font-size: 20px;
+	}
+
 	p {
 		line-height: 21px;
 	}
@@ -70,13 +75,17 @@ const ModalStyle = styled(ReactModal)`
 `;
 
 export const Buttons = styled.section`
-	height: 32px;
+	min-height: 32px;
+	height: auto;
+	margin-top: ${(props) => (props.marginTop ? props.marginTop : "25px")};
 	display: flex;
 	justify-content: space-evenly;
-	margin-top: 30px;
+	flex-wrap: wrap;
 
 	button {
 		width: 100%;
+		height: 30px;
+		margin-top: 5px;
 		max-width: ${(props) => (props.maxWidth ? props.maxWidth : "150px")};
 		font-family: "Roboto", sans-serif;
 		background-color: rgb(36, 21, 3);
