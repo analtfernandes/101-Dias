@@ -51,6 +51,7 @@ const ModalStyle = styled(ReactModal)`
 	text-align: center;
 	font-size: 18px;
 	font-family: "Roboto", sans-serif;
+	letter-spacing: 0.5px;
 
 	h1 {
 		margin: 0 auto 20px;
