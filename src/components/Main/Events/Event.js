@@ -1,13 +1,23 @@
-import { useStatusContext, useStorageContext } from "../../../contexts/";
+import {
+	useButtonContext,
+	useStatusContext,
+	useStorageContext,
+} from "../../../contexts/";
 import { statusMap, storageMap } from "../../../database";
 import { Buttons } from "./Modal";
 
 export function Event({ eventData, closeModal }) {
-	const { updateStatus } = useStatusContext();
-	const { updateItem } = useStorageContext();
+	const { status, updateStatus, addStatus } = useStatusContext();
+	const { storage, updateItem, addItem } = useStorageContext();
+	const { addButton } = useButtonContext();
 
 	function getEventConsequence({ eventKey, value, index }) {
-		if (!storageMap.has(eventKey) && !statusMap.has(eventKey)) return;
+		if (value === 0) return;
+
+		const keyDoesNotExist =
+			!storageMap.has(eventKey) && !statusMap.has(eventKey);
+
+		if (keyDoesNotExist) return;
 
 		const newValue = value < 0 ? value.toString() : `+${value}`;
 		const { description } = storageMap.get(eventKey) || statusMap.get(eventKey);
@@ -24,10 +34,24 @@ export function Event({ eventData, closeModal }) {
 
 		for (const { key, value } of eventData.consequences) {
 			if (statusMap.has(key)) {
-				updateStatus({ state: key, value });
+				if (status[key]) {
+					updateStatus({ state: key, value });
+					continue;
+				}
+
+				addStatus({ key, value });
+				addButton({ key });
 			}
+
 			if (storageMap.has(key)) {
-				updateItem({ key, value });
+				const hasKey = storage.find((storage) => storage.key === key);
+
+				if (hasKey) {
+					updateItem({ key, value });
+					continue;
+				}
+
+				addItem({ key, value });
 			}
 		}
 	}

@@ -9,6 +9,7 @@ const events = {
 				{ key: STORAGE_KEYS.food, value: +2 },
 				{ key: STORAGE_KEYS.books, value: +6 },
 				{ key: STATUS_KEYS.mental, value: +1 },
+				{ key: STATUS_KEYS.read, value: +0 },
 			],
 		},
 	},

@@ -5,7 +5,7 @@ import verifyStorage from "../components/App/verifyStorage";
 const StatusContext = createContext();
 
 export function StatusContextProvider({ children }) {
-	const { status, statusMap, setStatus, updateStatus } = useStatus();
+	const { status, statusMap, setStatus, updateStatus, addStatus } = useStatus();
 
 	useEffect(() => {
 		const data = verifyStorage();
@@ -13,7 +13,9 @@ export function StatusContextProvider({ children }) {
 	}, []);
 
 	return (
-		<StatusContext.Provider value={{ status, statusMap, updateStatus }}>
+		<StatusContext.Provider
+			value={{ status, statusMap, updateStatus, addStatus }}
+		>
 			{children}
 		</StatusContext.Provider>
 	);

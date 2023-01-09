@@ -27,6 +27,14 @@ const storageMap = new Map([
 			icon: ICONS_NAMES.medkit,
 		},
 	],
+	[
+		STORAGE_KEYS.books,
+		{
+			initialQuantity: 0,
+			description: "livros",
+			icon: ICONS_NAMES.library,
+		},
+	],
 ]);
 
 freezeMap(storageMap);

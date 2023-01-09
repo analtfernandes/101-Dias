@@ -87,6 +87,11 @@ function update_mental({ status, value }) {
 	return { mental };
 }
 
+function update_read({ status, value }) {
+	const read = status.read + value;
+	return { read };
+}
+
 const statesFunctions = {
 	update_time,
 	update_day,
@@ -94,6 +99,7 @@ const statesFunctions = {
 	update_hungry,
 	update_physical,
 	update_mental,
+	update_read,
 };
 
 function reducer(status, action) {
@@ -105,6 +111,9 @@ function reducer(status, action) {
 
 	if (action.do === "update") {
 		const functionName = `update_${action.state}`;
+
+		if (!statesFunctions[functionName]) return status;
+
 		const updatedStatus = statesFunctions[functionName]({
 			status,
 			value: action.value,
@@ -113,6 +122,17 @@ function reducer(status, action) {
 		return {
 			...status,
 			...updatedStatus,
+		};
+	}
+
+	if (action.do === "add") {
+		if (!statusMap.has(action.key)) return { ...status };
+
+		const { initial } = statusMap.get(action.key);
+
+		return {
+			...status,
+			[action.key]: initial + action.value,
 		};
 	}
 }
@@ -128,7 +148,11 @@ function useStatus(initialState = {}) {
 		return dispatch({ do: "update", state, value });
 	}
 
-	return { status, statusMap, setStatus, updateStatus };
+	function addStatus({ key, value }) {
+		return dispatch({ do: "add", key, value });
+	}
+
+	return { status, statusMap, setStatus, updateStatus, addStatus };
 }
 
 export { useStatus };

@@ -4,8 +4,11 @@ import { STORAGE_KEYS } from "../enums";
 
 function reducer(storage, action) {
 	if (action.do === "add") {
-		const { initialQuantity: quantity, ...data } = storageMap.get(action.key);
-		const updatedStorage = [...storage, { ...data, quantity, key: action.key }];
+		const { initialQuantity, ...data } = storageMap.get(action.key);
+		const updatedStorage = [
+			...storage,
+			{ ...data, quantity: initialQuantity + action.value, key: action.key },
+		];
 		return updatedStorage;
 	}
 
@@ -16,6 +19,8 @@ function reducer(storage, action) {
 
 	if (action.do === "update") {
 		const item = storage.find(({ key }) => key === action.key);
+
+		if (!item) return [...storage];
 
 		item.quantity =
 			item.quantity + action.value <= 0 ? 0 : item.quantity + action.value;
@@ -46,8 +51,8 @@ function getInitialItems() {
 function useStorage() {
 	const [storage, dispatch] = useReducer(reducer, getInitialItems());
 
-	function addItem({ key }) {
-		return dispatch({ do: "add", key });
+	function addItem({ key, value }) {
+		return dispatch({ do: "add", key, value });
 	}
 
 	function removeItem({ key }) {

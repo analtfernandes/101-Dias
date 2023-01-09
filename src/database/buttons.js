@@ -26,6 +26,15 @@ const buttonsMap = Object.freeze([
 		disabled: false,
 	},
 	{
+		key: STATUS_KEYS.read,
+		text: "Ler",
+		states: [
+			{ state: STATUS_KEYS.time, value: 1 },
+			{ state: STATUS_KEYS.read, value: 1 },
+		],
+		disabled: false,
+	},
+	{
 		key: STATUS_KEYS.sleep,
 		text: "Dormir",
 		states: [],
