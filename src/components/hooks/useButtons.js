@@ -3,6 +3,11 @@ import { useStatusContext } from "../../contexts";
 import { buttonsMap } from "../../database";
 import { STATUS_KEYS } from "../enums";
 
+function orderButtonsByDisabledAttribute(curr) {
+	if (curr.disabled) return 1;
+	if (!curr.disabled) return 0;
+}
+
 function reducer(buttons, action) {
 	if (action.do === "add") {
 		const newButton = buttonsMap.find(({ key }) => key === action.key);
@@ -11,7 +16,10 @@ function reducer(buttons, action) {
 			newButton.text = action.text;
 		}
 
-		return [...buttons, newButton];
+		const newButtons = [...buttons, newButton];
+		newButtons.sort(orderButtonsByDisabledAttribute);
+
+		return [...newButtons];
 	}
 
 	if (action.do === "remove") {
@@ -74,6 +82,8 @@ function getInitialButtons() {
 		const pet = currentButtons.find(({ key }) => key === STATUS_KEYS.pet);
 		pet.text = `Brincar com ${status.pet.name}`;
 	}
+
+	currentButtons.sort(orderButtonsByDisabledAttribute);
 
 	return currentButtons;
 }
