@@ -1,12 +1,13 @@
 import GlobalStyle from "../../assets/globalStyle/GlobalStyle";
 import { useState } from "react";
 
+import { TransitionFade } from "../utils";
 import {
 	StatusContextProvider,
 	ButtonContextProvider,
 	StorageContextProvider,
+	RecordContextProvider,
 } from "../../contexts";
-import { TransitionFade } from "../utils";
 
 import Header from "../Header/Header";
 import Main from "../Main/Main";
@@ -21,20 +22,22 @@ function App() {
 
 	return (
 		<StatusContextProvider>
-			<ButtonContextProvider>
-				<StorageContextProvider>
-					<GlobalStyle />
+			<RecordContextProvider>
+				<ButtonContextProvider>
+					<StorageContextProvider>
+						<GlobalStyle />
 
-					<TransitionFade
-						fadeConfig={fadeConfig}
-						setFadeConfig={setFadeConfig}
-					/>
+						<TransitionFade
+							fadeConfig={fadeConfig}
+							setFadeConfig={setFadeConfig}
+						/>
 
-					<Header />
-					<Main />
-					<Footer setFadeConfig={setFadeConfig} />
-				</StorageContextProvider>
-			</ButtonContextProvider>
+						<Header />
+						<Main />
+						<Footer setFadeConfig={setFadeConfig} />
+					</StorageContextProvider>
+				</ButtonContextProvider>
+			</RecordContextProvider>
 		</StatusContextProvider>
 	);
 }

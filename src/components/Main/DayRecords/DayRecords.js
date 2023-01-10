@@ -1,11 +1,13 @@
 import styled from "styled-components";
+import { useRecordContext } from "../../../contexts";
 import { Icons } from "../../utils";
-import { occorrences } from "./Occorrences";
 
-export default function DayEvents() {
+export default function DayRecords() {
+	const { records } = useRecordContext();
+
 	return (
 		<>
-			{occorrences.map(({ icon, text }, index) => (
+			{records.map(({ icon, text }, index) => (
 				<Message key={index}>
 					{icon ? <Icons type={icon} /> : ""}
 					{text}

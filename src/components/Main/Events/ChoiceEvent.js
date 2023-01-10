@@ -1,12 +1,19 @@
+import { useRecordContext } from "../../../contexts";
 import { MODAL_TYPES } from "../../enums";
 import { Buttons } from "./Modal";
 
 export function ChoiceEvent({ eventData, closeModal }) {
-	function closeChoiceEventModal({ event }) {
+	const { addRecord } = useRecordContext();
+
+	function closeChoiceEventModal({ event, record }) {
 		let config;
 
 		if (event) {
 			config = { isOpen: true, type: MODAL_TYPES.event, data: event };
+		}
+
+		if (event === null) {
+			addRecord(record);
 		}
 
 		closeModal(config);

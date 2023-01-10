@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import DayEvents from "./DayEvents/DayEvents";
+
 import { Tracking } from "./Events/Tracking";
+import DayRecords from "./DayRecords/DayRecords";
 import Storage from "./Storage/Storage";
 
 export default function Main() {
@@ -9,7 +10,7 @@ export default function Main() {
 			<Tracking />
 
 			<Container>
-				<DayEvents />
+				<DayRecords />
 			</Container>
 
 			<Container width="35%" maxWidth="450px" margin="0">

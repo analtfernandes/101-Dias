@@ -1,5 +1,6 @@
 import {
 	useButtonContext,
+	useRecordContext,
 	useStatusContext,
 	useStorageContext,
 } from "../../../contexts/";
@@ -10,6 +11,7 @@ export function Event({ eventData, closeModal }) {
 	const { status, updateStatus, addStatus } = useStatusContext();
 	const { storage, updateItem, addItem } = useStorageContext();
 	const { addButton } = useButtonContext();
+	const { addRecord } = useRecordContext();
 
 	function getEventConsequence({ eventKey, value, index }) {
 		if (value === 0) return;
@@ -54,6 +56,8 @@ export function Event({ eventData, closeModal }) {
 				addItem({ key, value });
 			}
 		}
+
+		addRecord(eventData.record);
 	}
 
 	return (
