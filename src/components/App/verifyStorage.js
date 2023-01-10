@@ -16,13 +16,13 @@ function verifyStorage() {
 			storage: [
 				{
 					key: STORAGE_KEYS.food,
-					description: storageMap[STORAGE_KEYS.food].description,
-					quantity: storageMap[STORAGE_KEYS.food].initialQuantity,
+					description: storageMap.get(STORAGE_KEYS.food).description,
+					quantity: storageMap.get(STORAGE_KEYS.food).initialQuantity,
 				},
 				{
 					key: STORAGE_KEYS.health,
-					description: storageMap[STORAGE_KEYS.health].description,
-					quantity: storageMap[STORAGE_KEYS.health].initialQuantity,
+					description: storageMap.get(STORAGE_KEYS.health).description,
+					quantity: storageMap.get(STORAGE_KEYS.health).initialQuantity,
 				},
 			],
 		};
