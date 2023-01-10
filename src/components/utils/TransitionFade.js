@@ -1,6 +1,9 @@
 import styled from "styled-components";
+import { useLayoutEffectsContext } from "../../contexts";
 
-export function TransitionFade({ fadeConfig, setFadeConfig }) {
+export function TransitionFade() {
+	const { fadeConfig, setFadeConfig } = useLayoutEffectsContext();
+
 	function initFade() {
 		setFadeConfig((prev) => ({ ...prev, init: false }));
 

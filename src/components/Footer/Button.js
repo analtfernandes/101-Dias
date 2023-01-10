@@ -1,17 +1,12 @@
 import styled from "styled-components";
 
-import { useStatusContext } from "../../contexts";
+import { useLayoutEffectsContext, useStatusContext } from "../../contexts";
 import { STATUS_KEYS } from "../enums";
 import { useSave } from "../hooks/useSave";
 
-export default function Button({
-	text,
-	states,
-	disabled,
-	buttonKey: key,
-	setFadeConfig,
-}) {
+export default function Button({ text, states, disabled, buttonKey: key }) {
 	const { status, updateStatus } = useStatusContext();
+	const { setFadeConfig } = useLayoutEffectsContext();
 	const saveGame = useSave();
 	const isSleepButton = key === STATUS_KEYS.sleep;
 

@@ -4,9 +4,14 @@ const LayoutEffectsContext = createContext();
 
 export function LayoutEffectsContextProvider({ children }) {
 	const [isSaving, setIsSaving] = useState(false);
+	const [fadeConfig, setFadeConfig] = useState({
+		isVisible: true,
+		display: false, // default true
+		timeout: 500,
+	});
 
 	return (
-		<LayoutEffectsContext.Provider value={{ isSaving, setIsSaving }}>
+		<LayoutEffectsContext.Provider value={{ isSaving, setIsSaving, fadeConfig, setFadeConfig }}>
 			{children}
 		</LayoutEffectsContext.Provider>
 	);

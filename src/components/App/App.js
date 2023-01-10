@@ -1,5 +1,4 @@
 import GlobalStyle from "../../assets/globalStyle/GlobalStyle";
-import { useState } from "react";
 
 import { TransitionFade } from "../utils";
 import {
@@ -16,12 +15,6 @@ import Footer from "../Footer/Footer";
 import { SavingGame } from "../SavingGame/SavingGame";
 
 function App() {
-	const [fadeConfig, setFadeConfig] = useState({
-		isVisible: true,
-		display: false, // default true
-		timeout: 500,
-	});
-
 	return (
 		<LayoutEffectsContextProvider>
 			<StatusContextProvider>
@@ -31,15 +24,11 @@ function App() {
 							<GlobalStyle />
 
 							<SavingGame />
-
-							<TransitionFade
-								fadeConfig={fadeConfig}
-								setFadeConfig={setFadeConfig}
-							/>
+							<TransitionFade />
 
 							<Header />
 							<Main />
-							<Footer setFadeConfig={setFadeConfig} />
+							<Footer />
 						</StorageContextProvider>
 					</ButtonContextProvider>
 				</RecordContextProvider>
