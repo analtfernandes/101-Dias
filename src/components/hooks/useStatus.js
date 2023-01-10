@@ -109,6 +109,13 @@ function reducer(status, action) {
 		};
 	}
 
+	if (action.do === "set_value") {
+		return {
+			...status,
+			[action.state]: action.value,
+		};
+	}
+
 	if (action.do === "update") {
 		const functionName = `update_${action.state}`;
 
@@ -144,6 +151,10 @@ function useStatus(initialState = {}) {
 		return dispatch({ do: "set", data });
 	}
 
+	function setStatusValue({ state, value }) {
+		return dispatch({ do: "set_value", state, value });
+	}
+
 	function updateStatus({ state, value }) {
 		return dispatch({ do: "update", state, value });
 	}
@@ -152,7 +163,14 @@ function useStatus(initialState = {}) {
 		return dispatch({ do: "add", key, value });
 	}
 
-	return { status, statusMap, setStatus, updateStatus, addStatus };
+	return {
+		status,
+		statusMap,
+		setStatus,
+		setStatusValue,
+		updateStatus,
+		addStatus,
+	};
 }
 
 export { useStatus };

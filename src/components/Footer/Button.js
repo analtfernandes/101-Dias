@@ -5,7 +5,7 @@ import { STATUS_KEYS } from "../enums";
 import { useSave } from "../hooks/useSave";
 
 export default function Button({ text, states, disabled, buttonKey: key }) {
-	const { status, updateStatus } = useStatusContext();
+	const { status, updateStatus, setStatusValue } = useStatusContext();
 	const { setFadeConfig } = useLayoutEffectsContext();
 	const saveGame = useSave();
 	const isSleepButton = key === STATUS_KEYS.sleep;
@@ -24,7 +24,7 @@ export default function Button({ text, states, disabled, buttonKey: key }) {
 		});
 
 		const updateStatusCallback = () => {
-			updateStatus({ state: STATUS_KEYS.time, value: -960 });
+			setStatusValue({ state: STATUS_KEYS.time, value: 0 });
 			updateStatus({ state: STATUS_KEYS.day, value: 1 });
 		};
 
