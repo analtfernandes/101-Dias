@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 import { useStatusContext } from "../../contexts";
 import { STATUS_KEYS } from "../enums";
+import { useSave } from "../hooks/useSave";
 
 export default function Button({
 	text,
@@ -10,7 +11,8 @@ export default function Button({
 	buttonKey: key,
 	setFadeConfig,
 }) {
-	const { updateStatus } = useStatusContext();
+	const { status, updateStatus } = useStatusContext();
+	const saveGame = useSave();
 	const isSleepButton = key === STATUS_KEYS.sleep;
 
 	function updateStatusFunction() {
@@ -26,20 +28,27 @@ export default function Button({
 			custom: true,
 		});
 
-		setTimeout(() => {
+		const updateStatusCallback = () => {
 			updateStatus({ state: STATUS_KEYS.time, value: -960 });
 			updateStatus({ state: STATUS_KEYS.day, value: 1 });
-		}, 1500);
+		};
+
+		const saveGameProps = {
+			callback: updateStatusCallback,
+			customStatus: { time: 0, day: status.day + 1 },
+		};
 
 		setTimeout(() => {
-			setFadeConfig({
-				await: true,
-				display: true,
-				isVisible: true,
-				custom: true,
-				timeout: 1000,
-			});
-		}, 3000);
+			saveGame(saveGameProps).then(() =>
+				setFadeConfig({
+					await: true,
+					display: true,
+					isVisible: true,
+					custom: true,
+					timeout: 1000,
+				})
+			);
+		}, 1500);
 	}
 
 	return (

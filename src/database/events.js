@@ -28,7 +28,7 @@ const events = {
 
 const choiceEvents = {
 	1: {
-		2: {
+		29: {
 			title: "Barulho no porão",
 			description: `Enquanto mergulhava em seus pensamentos, 
 				você ouviu um barulho vindo do porão.`,

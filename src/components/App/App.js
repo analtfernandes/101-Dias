@@ -7,11 +7,13 @@ import {
 	ButtonContextProvider,
 	StorageContextProvider,
 	RecordContextProvider,
+	LayoutEffectsContextProvider,
 } from "../../contexts";
 
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
+import { SavingGame } from "../SavingGame/SavingGame";
 
 function App() {
 	const [fadeConfig, setFadeConfig] = useState({
@@ -21,24 +23,28 @@ function App() {
 	});
 
 	return (
-		<StatusContextProvider>
-			<RecordContextProvider>
-				<ButtonContextProvider>
-					<StorageContextProvider>
-						<GlobalStyle />
+		<LayoutEffectsContextProvider>
+			<StatusContextProvider>
+				<RecordContextProvider>
+					<ButtonContextProvider>
+						<StorageContextProvider>
+							<GlobalStyle />
 
-						<TransitionFade
-							fadeConfig={fadeConfig}
-							setFadeConfig={setFadeConfig}
-						/>
+							<SavingGame />
 
-						<Header />
-						<Main />
-						<Footer setFadeConfig={setFadeConfig} />
-					</StorageContextProvider>
-				</ButtonContextProvider>
-			</RecordContextProvider>
-		</StatusContextProvider>
+							<TransitionFade
+								fadeConfig={fadeConfig}
+								setFadeConfig={setFadeConfig}
+							/>
+
+							<Header />
+							<Main />
+							<Footer setFadeConfig={setFadeConfig} />
+						</StorageContextProvider>
+					</ButtonContextProvider>
+				</RecordContextProvider>
+			</StatusContextProvider>
+		</LayoutEffectsContextProvider>
 	);
 }
 
