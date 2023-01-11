@@ -4,7 +4,7 @@ const events = {
 	1: {
 		20: {
 			description: `No porão, você percebeu algumas caixas caídas, 
-				a provável origem do barulho. Ao recolhê-lhas, você encontrou 
+				a provável origem do barulho.&&\nAo recolhê-lhas, você encontrou 
 				algumas latas de comidas.`,
 			consequences: [{ key: STORAGE_KEYS.food, value: +8 }],
 			record: {
@@ -28,9 +28,9 @@ const events = {
 
 const choiceEvents = {
 	1: {
-		29: {
+		20: {
 			title: "Barulho no porão",
-			description: `Enquanto mergulhava em seus pensamentos, 
+			description: `Enquanto mergulhava em seus pensamentos,&&\n
 				você ouviu um barulho vindo do porão.`,
 			buttons: [
 				{

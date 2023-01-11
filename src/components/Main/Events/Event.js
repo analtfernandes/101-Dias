@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import {
 	useButtonContext,
 	useRecordContext,
@@ -12,6 +13,11 @@ export function Event({ eventData, closeModal }) {
 	const { storage, updateItem, addItem } = useStorageContext();
 	const { addButton } = useButtonContext();
 	const { addRecord } = useRecordContext();
+	const [description, setDescription] = useState([]);
+
+	useEffect(() => {
+		setDescription(eventData.description.split("&&\n"));
+	}, [eventData]);
 
 	function getEventConsequence({ eventKey, value, index }) {
 		if (value === 0) return;
@@ -62,7 +68,9 @@ export function Event({ eventData, closeModal }) {
 
 	return (
 		<>
-			<p>{eventData.description}</p>
+			{description.map((text, index) => (
+				<p key={index}>{text.trim()}</p>
+			))}
 
 			<div>
 				{eventData.consequences.map(({ key: eventKey, value }, index) =>
