@@ -34,14 +34,19 @@ function getInitialItems() {
 	const localStorageData =
 		JSON.parse(localStorage.getItem("gameData"))?.storage || [];
 
-	let itemsKey = localStorageData.map(({ key }) => key);
-
 	if (localStorageData.length === 0) {
-		itemsKey = [STORAGE_KEYS.food, STORAGE_KEYS.health];
+		const itemsKey = [STORAGE_KEYS.food, STORAGE_KEYS.health];
+
+		for (const key of itemsKey) {
+			const { initialQuantity: quantity, ...data } = storageMap.get(key);
+			currentItems.push({ ...data, quantity, key });
+		}
+
+		return currentItems;
 	}
 
-	for (const key of itemsKey) {
-		const { initialQuantity: quantity, ...data } = storageMap.get(key);
+	for (const { key, quantity } of localStorageData) {
+		const { initialQuantity, ...data } = storageMap.get(key);
 		currentItems.push({ ...data, quantity, key });
 	}
 
