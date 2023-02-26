@@ -1,70 +1,57 @@
-# Getting Started with Create React App
+# :game_die: 101 Dias
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=success&style=for-the-badge)
 
-## Available Scripts
+Jogo de sobrevivência feito com React. Escolha o que fazer ao clicar nos botões do menu inferior, toda ação feita faz o tempo passar. Ocasionalmente, eventos podem ocorrer, seja eles bons ou não. Por quantos dias você consegue sobreviver?
+<br />
+Jogue aqui -> https://101-dias.vercel.app/
 
-In the project directory, you can run:
+<div align=center>
+ 
+  ![101 Dias preview](https://user-images.githubusercontent.com/97851922/221431206-90a1cacd-9a20-4de7-a247-89dec14ebb76.png)
+  ![101 Dias preview](https://user-images.githubusercontent.com/97851922/221431224-fc9cba57-c43b-44b9-acba-702e3b8d7334.png)
+  
+</div>
 
-### `npm start`
+<br />
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## :hammer: Funcionalidades
+- Atualizar status do jogador
+- Atualizar timer
+- Eventos
+- Listagem de eventos do dia
+- Armazém
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<br />
 
-### `npm test`
+## :hammer_and_wrench: Abrir e rodar o projeto
+1. Clone esse repositório:
+>```bash
+> git clone https://github.com/AnaLTFernandes/101-Dias.git
+>```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Na raiz do projeto, instale as dependências:
+>```bash
+> npm install
+>```
 
-### `npm run build`
+3. Inicie o projeto:
+>```bash
+> npm start
+>```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+4. Acesse http://localhost:3000 no seu navegador e aproveite <3
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<br />
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## :heavy_check_mark: Tecnologias utilizadas
+<img align="left" alt="react" height="25px" src="https://img.shields.io/badge/-React-5ED3F3?logo=react&logoColor=white" />
+<img align="left" alt="react-router-dom" height="25px" src="https://img.shields.io/badge/React-Router-5ED3F3" />
+<img align="left" alt="react-icons" height="25px" src="https://img.shields.io/badge/React-Icons-5ED3F3" />
+<img align="left" alt="styled-components" height="25px" src="https://img.shields.io/badge/styled-components-violet?logo=styled-components" />
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<br />
+<br />
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
