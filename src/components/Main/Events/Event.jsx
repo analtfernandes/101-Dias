@@ -4,9 +4,9 @@ import {
 	useRecordContext,
 	useStatusContext,
 	useStorageContext,
-} from "../../../contexts/";
+} from "../../../contexts";
 import { statusMap, storageMap } from "../../../database";
-import { Buttons } from "./Modal";
+import { Buttons } from "./Modal.jsx";
 
 export function Event({ eventData, closeModal }) {
 	const { status, updateStatus, addStatus } = useStatusContext();

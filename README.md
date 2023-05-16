@@ -27,7 +27,7 @@ Jogue aqui -> https://101-dias.vercel.app/
 ## :hammer_and_wrench: Abrir e rodar o projeto
 1. Clone esse repositório:
 >```bash
-> git clone https://github.com/AnaLTFernandes/101-Dias.git
+> git clone https://github.com/analtfernandes/101-Dias.git
 >```
 
 2. Na raiz do projeto, instale as dependências:
@@ -40,7 +40,7 @@ Jogue aqui -> https://101-dias.vercel.app/
 > npm start
 >```
 
-4. Acesse http://localhost:3000 no seu navegador e aproveite <3
+4. Acesse http://localhost:5173 no seu navegador e aproveite <3
 
 <br />
 

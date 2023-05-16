@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useStorageContext } from "../../../contexts/StorageContext";
+import { useStorageContext } from "../../../contexts";
 import { Icons } from "../../utils";
 
 export default function Storage() {

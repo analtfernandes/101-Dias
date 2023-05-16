@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import { useStatusContext } from "../../contexts";
 import { ICONS_NAMES, STATUS_KEYS } from "../enums";
-import { Icons } from "../utils/";
+import { Icons } from "../utils";
 
 export default function Header() {
 	const { status, statusMap } = useStatusContext();

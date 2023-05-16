@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRecordContext } from "../../../contexts";
 import { MODAL_TYPES } from "../../enums";
-import { Buttons } from "./Modal";
+import { Buttons } from "./Modal.jsx";
 
 export function ChoiceEvent({ eventData, closeModal }) {
 	const { addRecord } = useRecordContext();

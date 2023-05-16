@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useButtonContext } from "../../contexts";
 
-import Button from "./Button";
+import Button from "./Button.jsx";
 
 export default function Footer({ setFadeConfig }) {
 	const { buttons } = useButtonContext();
