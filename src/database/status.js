@@ -1,5 +1,5 @@
 import { ICONS_NAMES, STATUS_KEYS } from "../components/enums";
-import { format } from "./formatHelper";
+import { format, freeze } from "./formatHelper";
 
 const data = [
 	[
@@ -58,8 +58,10 @@ const data = [
 	],
 ];
 
+const dataFreeze = freeze.array(data);
+
 const map = format.map(data, "Status Entity Map");
 
-const statusEntity = { data, map };
+const statusEntity = { data: dataFreeze, map };
 
 export { statusEntity };

@@ -14,6 +14,14 @@ function freezeMap(map, collectionName = null) {
 	return map;
 }
 
+function freezeArray(data, freezeContent = true) {
+	if (freezeContent) {
+		for (const content of data) Object.freeze(content);
+	}
+
+	return Object.freeze(data);
+}
+
 function map(data, collectionName) {
 	return freezeMap(new Map(data), collectionName);
 }
@@ -22,4 +30,9 @@ const format = {
 	map,
 };
 
-export { format };
+const freeze = {
+	map: freezeMap,
+	array: freezeArray,
+};
+
+export { format, freeze };
