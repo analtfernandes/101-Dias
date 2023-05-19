@@ -10,6 +10,8 @@ function freezeMap(map, collectionName = null) {
 	map.set = action;
 	map.delete = action;
 	map.clear = action;
+
+	return map;
 }
 
 function map(data, collectionName) {
