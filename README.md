@@ -16,6 +16,7 @@ Jogue aqui -> https://101-dias.vercel.app/
 <br />
 
 ## :hammer: Funcionalidades
+
 - Atualizar status do jogador
 - Atualizar timer
 - Eventos
@@ -25,31 +26,35 @@ Jogue aqui -> https://101-dias.vercel.app/
 <br />
 
 ## :hammer_and_wrench: Abrir e rodar o projeto
+
 1. Clone esse repositório:
->```bash
-> git clone https://github.com/analtfernandes/101-Dias.git
->```
+
+   > ```bash
+   > git clone https://github.com/analtfernandes/101-Dias.git
+   > ```
 
 2. Na raiz do projeto, instale as dependências:
->```bash
-> npm install
->```
+
+   > ```bash
+   > npm install
+   > ```
 
 3. Inicie o projeto:
->```bash
-> npm start
->```
+
+   > ```bash
+   > npm run dev
+   > ```
 
 4. Acesse http://localhost:5173 no seu navegador e aproveite <3
 
 <br />
 
 ## :heavy_check_mark: Tecnologias utilizadas
+
 <img align="left" alt="react" height="25px" src="https://img.shields.io/badge/-React-5ED3F3?logo=react&logoColor=white" />
 <img align="left" alt="react-router-dom" height="25px" src="https://img.shields.io/badge/React-Router-5ED3F3" />
 <img align="left" alt="react-icons" height="25px" src="https://img.shields.io/badge/React-Icons-5ED3F3" />
 <img align="left" alt="styled-components" height="25px" src="https://img.shields.io/badge/styled-components-violet?logo=styled-components" />
-
 
 <br />
 <br />
