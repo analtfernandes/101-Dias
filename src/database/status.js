@@ -58,8 +58,8 @@ const data = [
 	],
 ];
 
-const map = format.map(data, "Status Entity");
+const map = format.map(data, "Status Entity Map");
 
-const statusMap = map;
+const statusEntity = { data, map };
 
-export { statusMap };
+export { statusEntity };

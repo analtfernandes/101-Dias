@@ -5,11 +5,11 @@ import {
 	useStatusContext,
 	useStorageContext,
 } from "../../../contexts";
-import { statusMap, storageMap } from "../../../database";
+import { storageMap } from "../../../database";
 import { Buttons } from "./Modal.jsx";
 
 export function Event({ eventData, closeModal }) {
-	const { status, updateStatus, addStatus } = useStatusContext();
+	const { status, statusMap, updateStatus, addStatus } = useStatusContext();
 	const { storage, updateItem, addItem } = useStorageContext();
 	const { addButton } = useButtonContext();
 	const { addRecord } = useRecordContext();

@@ -1,5 +1,7 @@
 import { useReducer } from "react";
-import { statusMap } from "../../database";
+import { statusEntity } from "../../database";
+
+const { map: statusMap } = statusEntity;
 
 function sort() {
 	return Math.random() - 0.5;
@@ -148,7 +150,6 @@ function useStatus(initialState = {}) {
 	const [status, dispatch] = useReducer(reducer, initialState);
 
 	function setStatus(data) {
-		console.log(statusMap)
 		return dispatch({ do: "set", data });
 	}
 
