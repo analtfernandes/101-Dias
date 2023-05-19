@@ -148,6 +148,7 @@ function useStatus(initialState = {}) {
 	const [status, dispatch] = useReducer(reducer, initialState);
 
 	function setStatus(data) {
+		console.log(statusMap)
 		return dispatch({ do: "set", data });
 	}
 

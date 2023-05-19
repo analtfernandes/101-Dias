@@ -1,16 +1,7 @@
 import { ICONS_NAMES, STATUS_KEYS } from "../components/enums";
+import { format } from "./formatHelper";
 
-function freezeMap(map) {
-	const action = () => {
-		throw new Error("Object is frozen.");
-	};
-
-	map.set = action;
-	map.delete = action;
-	map.clear = action;
-}
-
-const statusMap = new Map([
+const data = [
 	[
 		STATUS_KEYS.hungry,
 		{
@@ -65,8 +56,10 @@ const statusMap = new Map([
 			icon: ICONS_NAMES.book,
 		},
 	],
-]);
+];
 
-freezeMap(statusMap);
+const map = format.map(data, "Status Entity");
+
+const statusMap = map;
 
 export { statusMap };
