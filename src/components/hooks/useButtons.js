@@ -1,7 +1,9 @@
 import { useReducer } from "react";
 import { useStatusContext } from "../../contexts";
-import { buttonsMap } from "../../database";
+import { buttonsEntity } from "../../database";
 import { STATUS_KEYS } from "../enums";
+
+const { data: buttonsData, map: aa } = buttonsEntity;
 
 function orderButtonsByDisabledAttribute(curr) {
 	if (curr.disabled) return 1;
@@ -10,7 +12,7 @@ function orderButtonsByDisabledAttribute(curr) {
 
 function reducer(buttons, action) {
 	if (action.do === "add") {
-		const newButton = buttonsMap.find(({ key }) => key === action.key);
+		const newButton = buttonsData.find(({ key }) => key === action.key);
 
 		if (action.key === STATUS_KEYS.pet) {
 			newButton.text = action.text;
@@ -68,7 +70,7 @@ function reducer(buttons, action) {
 function getInitialButtons() {
 	const status = JSON.parse(localStorage.getItem("gameData"));
 
-	const currentButtons = buttonsMap.filter(({ key }) => {
+	const currentButtons = buttonsData.filter(({ key }) => {
 		const isBasicButton =
 			key === STATUS_KEYS.written ||
 			key === STATUS_KEYS.hungry ||

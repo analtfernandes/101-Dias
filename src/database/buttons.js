@@ -1,6 +1,7 @@
 import { STATUS_KEYS } from "../components/enums";
+import { format, freeze } from "./formatHelper";
 
-const buttonsMap = Object.freeze([
+const data = [
 	{
 		key: STATUS_KEYS.written,
 		text: "Escrever",
@@ -40,6 +41,13 @@ const buttonsMap = Object.freeze([
 		states: [],
 		disabled: true,
 	},
-]);
+];
 
-export { buttonsMap };
+const dataFreeze = freeze.array(data);
+
+const dataMapFormat = data.map((button) => [button.key, button]);
+const map = format.map(dataMapFormat, "Buttons Entity Map");
+
+const buttonsEntity = { data: dataFreeze, map };
+
+export { buttonsEntity };
