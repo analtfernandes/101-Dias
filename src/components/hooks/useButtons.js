@@ -37,12 +37,11 @@ function reducer(buttons, action) {
 					...button,
 					disabled: false,
 				};
-			} else {
-				return {
+			}
+			return {
 					...button,
 					disabled: true,
-				};
-			}
+			};
 		});
 
 		return updatedButtons;
@@ -55,12 +54,11 @@ function reducer(buttons, action) {
 					...button,
 					disabled: false,
 				};
-			} else {
-				return {
+			}
+			return {
 					...button,
 					disabled: true,
-				};
-			}
+			};
 		});
 
 		return updatedButtons;
