@@ -1,6 +1,8 @@
 import { useReducer } from "react";
-import { storageMap } from "../../database";
+import { storageEntity } from "../../database";
 import { STORAGE_KEYS } from "../enums";
+
+const { map: storageMap } = storageEntity;
 
 function reducer(storage, action) {
 	if (action.do === "add") {

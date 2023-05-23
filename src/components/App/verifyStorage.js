@@ -1,5 +1,7 @@
-import { storageMap } from "../../database";
+import { storageEntity } from "../../database";
 import { STORAGE_KEYS } from "../enums";
+
+const { map: storageMap } = storageEntity;
 
 function verifyStorage() {
 	const storageData = localStorage.getItem("gameData");

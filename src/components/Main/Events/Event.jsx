@@ -5,8 +5,10 @@ import {
 	useStatusContext,
 	useStorageContext,
 } from "../../../contexts";
-import { storageMap } from "../../../database";
+import { storageEntity } from "../../../database";
 import { Buttons } from "./Modal.jsx";
+
+const { map: storageMap } = storageEntity;
 
 export function Event({ eventData, closeModal }) {
 	const { status, statusMap, updateStatus, addStatus } = useStatusContext();

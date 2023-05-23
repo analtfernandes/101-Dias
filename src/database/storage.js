@@ -1,16 +1,7 @@
 import { ICONS_NAMES, STORAGE_KEYS } from "../components/enums";
+import { format, freeze } from "./formatHelper";
 
-function freezeMap(map) {
-	const action = () => {
-		throw new Error("Object is frozen.");
-	};
-
-	map.set = action;
-	map.delete = action;
-	map.clear = action;
-}
-
-const storageMap = new Map([
+const data = [
 	[
 		STORAGE_KEYS.food,
 		{
@@ -35,8 +26,12 @@ const storageMap = new Map([
 			icon: ICONS_NAMES.library,
 		},
 	],
-]);
+];
 
-freezeMap(storageMap);
+const dataFreeze = freeze.array(data);
 
-export { storageMap };
+const map = format.map(data, "Storage Entity Map");
+
+const storageEntity = { data: dataFreeze, map };
+
+export { storageEntity };
