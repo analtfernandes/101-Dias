@@ -1,13 +1,7 @@
 import GlobalStyle from "../../assets/globalStyle/GlobalStyle.js";
 
 import { TransitionFade } from "../utils";
-import {
-	StatusContextProvider,
-	ButtonContextProvider,
-	StorageContextProvider,
-	RecordContextProvider,
-	LayoutEffectsContextProvider,
-} from "../../contexts";
+import { AppContextsProvider } from "../../contexts";
 
 import Header from "../Header/Header.jsx";
 import Main from "../Main/Main.jsx";
@@ -16,24 +10,16 @@ import { SavingGame } from "../SavingGame/SavingGame.jsx";
 
 function App() {
 	return (
-		<LayoutEffectsContextProvider>
-			<StatusContextProvider>
-				<RecordContextProvider>
-					<ButtonContextProvider>
-						<StorageContextProvider>
-							<GlobalStyle />
+		<AppContextsProvider>
+			<GlobalStyle />
 
-							<SavingGame />
-							<TransitionFade />
+			<SavingGame />
+			<TransitionFade />
 
-							<Header />
-							<Main />
-							<Footer />
-						</StorageContextProvider>
-					</ButtonContextProvider>
-				</RecordContextProvider>
-			</StatusContextProvider>
-		</LayoutEffectsContextProvider>
+			<Header />
+			<Main />
+			<Footer />
+		</AppContextsProvider>
 	);
 }
 
