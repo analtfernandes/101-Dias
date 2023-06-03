@@ -4,7 +4,7 @@ import { STORAGE_KEYS } from "../enums";
 const { map: storageMap } = storageEntity;
 
 function verifyStorage() {
-	const storageData = localStorage.getItem("gameData");
+	const storageData = localStorage.getItem("101-dias");
 
 	if (!storageData) {
 		const data = {
@@ -29,7 +29,7 @@ function verifyStorage() {
 			],
 		};
 
-		localStorage.setItem("gameData", JSON.stringify(data));
+		localStorage.setItem("101-dias", JSON.stringify(data));
 
 		return data;
 	}

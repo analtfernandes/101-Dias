@@ -2,8 +2,9 @@ import { useReducer } from "react";
 import { useStatusContext } from "../contexts";
 import { buttonsEntity } from "../database";
 import { STATUS_KEYS } from "../components/enums";
+import { useLocalStorage } from "./index";
 
-const { data: buttonsData, map: aa } = buttonsEntity;
+const { data: buttonsData } = buttonsEntity;
 
 function orderButtonsByDisabledAttribute(curr) {
 	if (curr.disabled) return 1;
@@ -39,8 +40,8 @@ function reducer(buttons, action) {
 				};
 			}
 			return {
-					...button,
-					disabled: true,
+				...button,
+				disabled: true,
 			};
 		});
 
@@ -56,8 +57,8 @@ function reducer(buttons, action) {
 				};
 			}
 			return {
-					...button,
-					disabled: true,
+				...button,
+				disabled: true,
 			};
 		});
 
@@ -65,8 +66,8 @@ function reducer(buttons, action) {
 	}
 }
 
-function getInitialButtons() {
-	const status = JSON.parse(localStorage.getItem("gameData"));
+function getInitialButtons(localStorageHook) {
+	const status = localStorageHook.getData();
 
 	const currentButtons = buttonsData.filter(({ key }) => {
 		const isBasicButton =
@@ -89,8 +90,12 @@ function getInitialButtons() {
 }
 
 function useButtons() {
-	const [buttons, dispatch] = useReducer(reducer, getInitialButtons());
 	const { status } = useStatusContext();
+	const localStorage = useLocalStorage();
+	const [buttons, dispatch] = useReducer(
+		reducer,
+		getInitialButtons(localStorage)
+	);
 
 	function addButton({ key, text = "" }) {
 		return dispatch({ do: "add", key, text });

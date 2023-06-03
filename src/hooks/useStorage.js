@@ -1,6 +1,7 @@
 import { useReducer } from "react";
 import { storageEntity } from "../database";
 import { STORAGE_KEYS } from "../components/enums";
+import { useLocalStorage } from "./useLocalStorage";
 
 const { map: storageMap } = storageEntity;
 
@@ -31,10 +32,9 @@ function reducer(storage, action) {
 	}
 }
 
-function getInitialItems() {
+function getInitialItems(localStorageHook) {
 	const currentItems = [];
-	const localStorageData =
-		JSON.parse(localStorage.getItem("gameData"))?.storage || [];
+	const localStorageData = localStorageHook.getData()?.storage || [];
 
 	if (localStorageData.length === 0) {
 		const itemsKey = [STORAGE_KEYS.food, STORAGE_KEYS.health];
@@ -56,7 +56,11 @@ function getInitialItems() {
 }
 
 function useStorage() {
-	const [storage, dispatch] = useReducer(reducer, getInitialItems());
+	const localStorage = useLocalStorage();
+	const [storage, dispatch] = useReducer(
+		reducer,
+		getInitialItems(localStorage)
+	);
 
 	function addItem({ key, value }) {
 		return dispatch({ do: "add", key, value });

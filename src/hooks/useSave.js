@@ -3,11 +3,14 @@ import {
 	useStatusContext,
 	useStorageContext,
 } from "../contexts";
+import { useLocalStorage } from "./index";
 
 function useSave() {
 	const { status } = useStatusContext();
 	const { storage } = useStorageContext();
 	const { setIsSaving } = useLayoutEffectsContext();
+	const localStorageHook = useLocalStorage();
+
 	let timeoutResolve = 2000;
 
 	return ({ callback, customStatus }) => {
@@ -24,7 +27,7 @@ function useSave() {
 			}));
 			const newData = { ...status, storage: newStorage, ...customStatus };
 
-			localStorage.setItem("gameData", JSON.stringify(newData));
+			localStorageHook.set(newData);
 
 			setTimeout(() => {
 				setIsSaving(false);
