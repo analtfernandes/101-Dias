@@ -1,5 +1,6 @@
 import { createContext, useContext } from "react";
 import { useStorage } from "../components/hooks/useStorage";
+import { handleContextError } from "./contextError";
 
 const StorageContext = createContext();
 
@@ -18,7 +19,7 @@ export function StorageContextProvider({ children }) {
 export function useStorageContext() {
 	const context = useContext(StorageContext);
 
-	if (!context) throw new Error("Esse contexto não está disponível.");
+	if (!context) return handleContextError("Storage");
 
 	return context;
 }

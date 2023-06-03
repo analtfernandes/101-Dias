@@ -1,5 +1,6 @@
 import { createContext, useContext } from "react";
 import { useRecords } from "../components/hooks/useRecords";
+import { handleContextError } from "./contextError";
 
 const RecordContext = createContext();
 
@@ -16,7 +17,7 @@ export function RecordContextProvider({ children }) {
 export function useRecordContext() {
 	const context = useContext(RecordContext);
 
-	if (!context) throw new Error("Esse contexto não está disponível.");
+	if (!context) return handleContextError("Record");
 
 	return context;
 }

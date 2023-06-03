@@ -1,5 +1,6 @@
 import { createContext, useContext } from "react";
 import { useButtons } from "../components/hooks/useButtons";
+import { handleContextError } from "./contextError";
 
 const ButtonContext = createContext();
 
@@ -16,7 +17,7 @@ export function ButtonContextProvider({ children }) {
 export function useButtonContext() {
 	const context = useContext(ButtonContext);
 
-	if (!context) throw new Error("Esse contexto não está disponível.");
+	if (!context) return handleContextError("Button");
 
 	return context;
 }
