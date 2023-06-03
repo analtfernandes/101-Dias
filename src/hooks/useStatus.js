@@ -1,5 +1,6 @@
 import { useReducer } from "react";
 import { statusEntity } from "../database";
+import { useLocalStorage } from "./useLocalStorage";
 
 const { map: statusMap } = statusEntity;
 
@@ -146,8 +147,32 @@ function reducer(status, action) {
 	}
 }
 
-function useStatus(initialState = {}) {
-	const [status, dispatch] = useReducer(reducer, initialState);
+function getInitialStatus(localStorageHook) {
+	const { storage, ...status } = localStorageHook.getData();
+
+	if (status.day) return status;
+
+	const data = {
+		time: 0,
+		day: 1,
+		written: 0,
+		physical: 0,
+		hungry: 0,
+		mental: 50,
+		unhealth: 0,
+	};
+
+	localStorageHook.update(data);
+
+	return data;
+}
+
+function useStatus() {
+	const localStorage = useLocalStorage();
+	const [status, dispatch] = useReducer(
+		reducer,
+		getInitialStatus(localStorage)
+	);
 
 	function setStatus(data) {
 		return dispatch({ do: "set", data });

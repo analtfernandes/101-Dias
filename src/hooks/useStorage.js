@@ -34,20 +34,30 @@ function reducer(storage, action) {
 
 function getInitialItems(localStorageHook) {
 	const currentItems = [];
-	const localStorageData = localStorageHook.getData()?.storage || [];
+	let { storage } = localStorageHook.getData();
 
-	if (localStorageData.length === 0) {
-		const itemsKey = [STORAGE_KEYS.food, STORAGE_KEYS.health];
+	if (!storage || storage.length < 2) {
+		const data = {
+			storage: [
+				{
+					key: STORAGE_KEYS.food,
+					description: storageMap.get(STORAGE_KEYS.food).description,
+					quantity: storageMap.get(STORAGE_KEYS.food).initialQuantity,
+				},
+				{
+					key: STORAGE_KEYS.health,
+					description: storageMap.get(STORAGE_KEYS.health).description,
+					quantity: storageMap.get(STORAGE_KEYS.health).initialQuantity,
+				},
+			],
+		};
 
-		for (const key of itemsKey) {
-			const { initialQuantity: quantity, ...data } = storageMap.get(key);
-			currentItems.push({ ...data, quantity, key });
-		}
+		storage = data.storage;
 
-		return currentItems;
+		localStorageHook.update(data);
 	}
 
-	for (const { key, quantity } of localStorageData) {
+	for (const { key, quantity } of storage) {
 		const { initialQuantity, ...data } = storageMap.get(key);
 		currentItems.push({ ...data, quantity, key });
 	}

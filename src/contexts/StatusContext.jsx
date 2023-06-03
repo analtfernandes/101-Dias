@@ -1,24 +1,12 @@
-import { createContext, useEffect, useContext } from "react";
+import { createContext, useContext } from "react";
 import { useStatus } from "../hooks/useStatus";
-import verifyStorage from "../components/app/verifyStorage";
 import { handleContextError } from "./contextError";
 
 const StatusContext = createContext();
 
 export function StatusContextProvider({ children }) {
-	const {
-		status,
-		statusMap,
-		setStatus,
-		setStatusValue,
-		updateStatus,
-		addStatus,
-	} = useStatus();
-
-	useEffect(() => {
-		const data = verifyStorage();
-		setStatus(data);
-	}, []);
+	const { status, statusMap, setStatusValue, updateStatus, addStatus } =
+		useStatus();
 
 	return (
 		<StatusContext.Provider
