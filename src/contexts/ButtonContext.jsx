@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import { useButtons } from "../components/hooks/useButtons";
+import { useButtons } from "../hooks/useButtons";
 import { handleContextError } from "./contextError";
 
 const ButtonContext = createContext();

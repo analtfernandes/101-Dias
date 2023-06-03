@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { useRecordContext } from "../../../contexts";
-import { Icons } from "../../utils";
+import { useRecordContext } from "../../contexts";
+import { Icons } from "../utils";
 
 export default function DayRecords() {
 	const { records } = useRecordContext();

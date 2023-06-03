@@ -4,8 +4,8 @@ import {
 	useRecordContext,
 	useStatusContext,
 	useStorageContext,
-} from "../../../contexts";
-import { storageEntity } from "../../../database";
+} from "../../contexts";
+import { storageEntity } from "../../database";
 import { Buttons } from "./Modal.jsx";
 
 const { map: storageMap } = storageEntity;

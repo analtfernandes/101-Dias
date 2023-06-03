@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import { useStorage } from "../components/hooks/useStorage";
+import { useStorage } from "../hooks/useStorage";
 import { handleContextError } from "./contextError";
 
 const StorageContext = createContext();

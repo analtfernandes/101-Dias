@@ -1,5 +1,5 @@
 import { useReducer } from "react";
-import { statusEntity } from "../../database";
+import { statusEntity } from "../database";
 
 const { map: statusMap } = statusEntity;
 

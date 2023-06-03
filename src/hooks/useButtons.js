@@ -1,7 +1,7 @@
 import { useReducer } from "react";
-import { useStatusContext } from "../../contexts";
-import { buttonsEntity } from "../../database";
-import { STATUS_KEYS } from "../enums";
+import { useStatusContext } from "../contexts";
+import { buttonsEntity } from "../database";
+import { STATUS_KEYS } from "../components/enums";
 
 const { data: buttonsData, map: aa } = buttonsEntity;
 

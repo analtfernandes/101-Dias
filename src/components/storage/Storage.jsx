@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { useStorageContext } from "../../../contexts";
-import { Icons } from "../../utils";
+import { useStorageContext } from "../../contexts";
+import { Icons } from "../utils";
 
 export default function Storage() {
 	const { storage } = useStorageContext();

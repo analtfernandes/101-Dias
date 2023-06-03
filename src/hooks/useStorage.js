@@ -1,6 +1,6 @@
 import { useReducer } from "react";
-import { storageEntity } from "../../database";
-import { STORAGE_KEYS } from "../enums";
+import { storageEntity } from "../database";
+import { STORAGE_KEYS } from "../components/enums";
 
 const { map: storageMap } = storageEntity;
 

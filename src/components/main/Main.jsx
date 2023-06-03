@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-import { Tracking } from "./Events/Tracking";
-import DayRecords from "./DayRecords/DayRecords";
-import Storage from "./Storage/Storage";
+import { Tracking } from "../events/Tracking";
+import DayRecords from "../dayRecords/DayRecords";
+import Storage from "../storage/Storage";
 
 export default function Main() {
 	return (

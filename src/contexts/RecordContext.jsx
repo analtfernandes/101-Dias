@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import { useRecords } from "../components/hooks/useRecords";
+import { useRecords } from "../hooks/useRecords";
 import { handleContextError } from "./contextError";
 
 const RecordContext = createContext();

@@ -1,6 +1,6 @@
 import { createContext, useEffect, useContext } from "react";
-import { useStatus } from "../components/hooks/useStatus";
-import verifyStorage from "../components/App/verifyStorage";
+import { useStatus } from "../hooks/useStatus";
+import verifyStorage from "../components/app/verifyStorage";
 import { handleContextError } from "./contextError";
 
 const StatusContext = createContext();

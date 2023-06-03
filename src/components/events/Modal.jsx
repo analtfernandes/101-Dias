@@ -1,6 +1,6 @@
 import ReactModal from "react-modal";
 import styled from "styled-components";
-import { MODAL_TYPES } from "../../enums";
+import { MODAL_TYPES } from "../enums";
 
 import { ChoiceEvent } from "./ChoiceEvent.jsx";
 import { Event } from "./Event.jsx";
