@@ -1,6 +1,6 @@
 import { useReducer } from "react";
 import { useStatusContext } from "../contexts";
-import { ICONS_NAMES } from "../components/enums";
+import { ICONS_NAMES } from "../enums";
 
 const initialRecords = [{ icon: ICONS_NAMES.sunny, text: "O dia começou" }];
 const lastDayRecord = {

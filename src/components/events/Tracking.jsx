@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useStatusContext } from "../../contexts";
 import { choiceEvents, events } from "../../database/events.js";
-import { MODAL_TYPES } from "../enums";
+import { MODAL_TYPES } from "../../enums";
 
 import { Modal } from "./Modal.jsx";
 

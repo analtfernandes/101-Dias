@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import { useLayoutEffectsContext, useStatusContext } from "../../contexts";
-import { STATUS_KEYS } from "../enums";
+import { STATUS_KEYS } from "../../enums";
 import { useSave } from "../../hooks";
 
 export default function Button({ text, states, disabled, buttonKey: key }) {

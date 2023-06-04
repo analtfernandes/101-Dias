@@ -1,4 +1,4 @@
-import { STATUS_KEYS } from "../components/enums";
+import { STATUS_KEYS } from "../enums";
 import { format, freeze } from "./formatHelper";
 
 const data = [

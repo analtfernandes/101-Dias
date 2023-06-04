@@ -15,7 +15,7 @@ import {
 	IoLibrary,
 } from "react-icons/io5";
 
-import { ICONS_NAMES } from "../enums";
+import { ICONS_NAMES } from "../../enums";
 
 const ICONS = {
 	[ICONS_NAMES.medkit]: FaMedkit,

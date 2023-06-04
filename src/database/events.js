@@ -1,4 +1,4 @@
-import { STATUS_KEYS, STORAGE_KEYS } from "../components/enums";
+import { STATUS_KEYS, STORAGE_KEYS } from "../enums";
 
 const events = {
 	1: {

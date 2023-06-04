@@ -1,4 +1,4 @@
-import { ICONS_NAMES, STORAGE_KEYS } from "../components/enums";
+import { ICONS_NAMES, STORAGE_KEYS } from "../enums";
 import { format, freeze } from "./formatHelper";
 
 const data = [
