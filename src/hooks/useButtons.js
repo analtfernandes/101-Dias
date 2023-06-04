@@ -6,7 +6,7 @@ import { useLocalStorage } from "./index";
 
 const { data: buttonsData } = buttonsEntity;
 
-function orderButtonsByDisabledAttribute(curr) {
+function sortButtonsByDisabledAttribute(curr) {
 	if (curr.disabled) return 1;
 	if (!curr.disabled) return 0;
 }
@@ -14,20 +14,15 @@ function orderButtonsByDisabledAttribute(curr) {
 function reducer(buttons, action) {
 	if (action.do === "add") {
 		const newButton = buttonsData.find(({ key }) => key === action.key);
-
-		if (action.key === STATUS_KEYS.pet) {
-			newButton.text = action.text;
-		}
-
 		const newButtons = [...buttons, newButton];
-		newButtons.sort(orderButtonsByDisabledAttribute);
+
+		newButtons.sort(sortButtonsByDisabledAttribute);
 
 		return [...newButtons];
 	}
 
 	if (action.do === "remove") {
 		const updatedButtons = buttons.filter(({ key }) => key !== action.key);
-
 		return updatedButtons;
 	}
 
@@ -79,12 +74,7 @@ function getInitialButtons(localStorageHook) {
 		return status?.hasOwnProperty(key) || isBasicButton;
 	});
 
-	if (status?.pet) {
-		const pet = currentButtons.find(({ key }) => key === STATUS_KEYS.pet);
-		pet.text = `Brincar com ${status.pet.name}`;
-	}
-
-	currentButtons.sort(orderButtonsByDisabledAttribute);
+	currentButtons.sort(sortButtonsByDisabledAttribute);
 
 	return currentButtons;
 }
@@ -113,8 +103,8 @@ function useButtons() {
 		return dispatch({ do: "set_wake_time" });
 	}
 
-	if (status.time === 960 && buttons[0]?.disabled === false) setSleepTime();
 	if (status.time === 0 && buttons[0]?.disabled === true) setWakeTime();
+	if (status.time === 960 && buttons[0]?.disabled === false) setSleepTime();
 
 	return { buttons, addButton, removeButton };
 }
