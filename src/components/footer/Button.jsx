@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import { useLayoutEffectsContext, useStatusContext } from "../../contexts";
 import { STATUS_KEYS } from "../enums";
-import { useSave } from "../../hooks/useSave.js";
+import { useSave } from "../../hooks";
 
 export default function Button({ text, states, disabled, buttonKey: key }) {
 	const { status, updateStatus, setStatusValue } = useStatusContext();
@@ -30,7 +30,7 @@ export default function Button({ text, states, disabled, buttonKey: key }) {
 
 		const saveGameProps = {
 			callback: updateStatusCallback,
-			customStatus: { time: 0, day: status.day + 1 },
+			data: { time: 0, day: status.day + 1 },
 		};
 
 		setTimeout(() => {

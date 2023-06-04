@@ -11,9 +11,10 @@ function useSave() {
 	const { setIsSaving } = useLayoutEffectsContext();
 	const localStorageHook = useLocalStorage();
 
-	let timeoutResolve = 2000;
+	const defaultProps = { callback: () => {}, data: {} };
+	const timeoutResolve = 2000;
 
-	return ({ callback, customStatus }) => {
+	return ({ callback, data } = defaultProps) => {
 		return new Promise((resolve) => {
 			setIsSaving(true);
 
@@ -21,13 +22,13 @@ function useSave() {
 				callback();
 			}
 
-			const newStorage = storage.map(({ key, quantity }) => ({
+			const formattedStorage = storage.map(({ key, quantity }) => ({
 				key,
 				quantity,
 			}));
-			const newData = { ...status, storage: newStorage, ...customStatus };
+			const currentData = { ...status, storage: formattedStorage, ...data };
 
-			localStorageHook.set(newData);
+			localStorageHook.set(currentData);
 
 			setTimeout(() => {
 				setIsSaving(false);
