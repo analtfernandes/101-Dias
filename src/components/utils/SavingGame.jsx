@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useLayoutEffectsContext } from "../../contexts";
-import { Loading } from "../utils";
+import { Loading } from "./index";
 
 export function SavingGame() {
 	const { isSaving } = useLayoutEffectsContext();
