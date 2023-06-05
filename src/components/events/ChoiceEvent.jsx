@@ -12,13 +12,11 @@ export function ChoiceEvent({ eventData, closeModal }) {
 	}, [eventData]);
 
 	function closeChoiceEventModal({ event, record }) {
-		let config;
+		let config = null;
 
 		if (event) {
 			config = { isOpen: true, type: MODAL_TYPES.event, data: event };
-		}
-
-		if (event === null) {
+		} else {
 			addRecord(record);
 		}
 
