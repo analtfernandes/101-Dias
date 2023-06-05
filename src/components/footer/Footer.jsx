@@ -1,15 +1,14 @@
 import styled from "styled-components";
 import { useButtonContext } from "../../contexts";
-
 import Button from "./Button.jsx";
 
-export default function Footer({ setFadeConfig }) {
+export default function Footer() {
 	const { buttons } = useButtonContext();
 
 	return (
 		<Wrapper>
 			{buttons.map((button, index) => (
-				<Button key={index} {...button} buttonKey={button.key} setFadeConfig={ setFadeConfig }/>
+				<Button key={index} {...button} buttonKey={button.key} />
 			))}
 		</Wrapper>
 	);

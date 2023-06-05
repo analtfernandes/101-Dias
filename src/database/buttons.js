@@ -38,7 +38,10 @@ const data = [
 	{
 		key: STATUS_KEYS.sleep,
 		text: "Dormir",
-		states: [],
+		states: [
+			{ state: STATUS_KEYS.day, value: 1 },
+			{ state: STATUS_KEYS.time, value: -960 },
+		],
 		disabled: true,
 	},
 ];

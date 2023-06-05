@@ -5,14 +5,15 @@ import { STATUS_KEYS } from "../../enums";
 import { useSave } from "../../hooks";
 
 export default function Button({ text, states, disabled, buttonKey: key }) {
-	const { status, updateStatus, setStatusValue } = useStatusContext();
+	const { status, updateStatus } = useStatusContext();
 	const { setFadeConfig } = useLayoutEffectsContext();
 	const saveGame = useSave();
+
 	const isSleepButton = key === STATUS_KEYS.sleep;
 
 	function updateStatusFunction() {
-		for (let i = 0; i < states.length; i++) {
-			updateStatus({ state: states[i].state, value: states[i].value });
+		for (const { state, value } of states) {
+			updateStatus({ state, value });
 		}
 	}
 
@@ -23,13 +24,8 @@ export default function Button({ text, states, disabled, buttonKey: key }) {
 			custom: true,
 		});
 
-		const updateStatusCallback = () => {
-			setStatusValue({ state: STATUS_KEYS.time, value: 0 });
-			updateStatus({ state: STATUS_KEYS.day, value: 1 });
-		};
-
 		const saveGameProps = {
-			callback: updateStatusCallback,
+			callback: updateStatusFunction,
 			data: { time: 0, day: status.day + 1 },
 		};
 
@@ -68,20 +64,15 @@ const Wrapper = styled.button`
 	font-size: 18px;
 	color: ghostwhite;
 
-	${(props) =>
-		props.disabled
-			? `
-            filter: brightness(0.5);
-        `
-			: `
-            &:hover {
-                filter: brightness(0.8);
-                cursor: pointer;
-            }
+	:hover {
+		filter: brightness(0.8);
+		transform: translateY(1px);
+		cursor: pointer;
+	}
 
-            &:active {
-                filter: brightness(0.8);
-                transform: translateY(1px);
-            }
-        `}
+	:disabled {
+		filter: brightness(0.5);
+		transform: translateY(0);
+		cursor: default;
+	}
 `;
