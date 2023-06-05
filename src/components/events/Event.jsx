@@ -1,47 +1,40 @@
 import { useEffect, useState } from "react";
+import { storageEntity } from "../../database";
 import {
 	useButtonContext,
 	useRecordContext,
 	useStatusContext,
 	useStorageContext,
 } from "../../contexts";
-import { storageEntity } from "../../database";
 import { Buttons } from "./Modal.jsx";
 
 const { map: storageMap } = storageEntity;
 
 export function Event({ eventData, closeModal }) {
+	const [description, setDescription] = useState([]);
 	const { status, statusMap, updateStatus, addStatus } = useStatusContext();
 	const { storage, updateItem, addItem } = useStorageContext();
 	const { addButton } = useButtonContext();
 	const { addRecord } = useRecordContext();
-	const [description, setDescription] = useState([]);
 
 	useEffect(() => {
 		setDescription(eventData.description.split("&&\n"));
 	}, [eventData]);
 
-	function getEventConsequence({ eventKey, value, index }) {
-		if (value === 0) return;
+	function keyExist(key) {
+		return storageMap.has(key) || statusMap.has(key);
+	}
 
-		const keyDoesNotExist =
-			!storageMap.has(eventKey) && !statusMap.has(eventKey);
-
-		if (keyDoesNotExist) return;
+	function getEventConsequence({ eventKey, value }) {
+		if (value === 0 || !keyExist(eventKey)) return {};
 
 		const newValue = value < 0 ? value.toString() : `+${value}`;
 		const { description } = storageMap.get(eventKey) || statusMap.get(eventKey);
 
-		return (
-			<span key={index}>
-				{description}: {newValue}
-			</span>
-		);
+		return { description, newValue };
 	}
 
-	function closeEventModal() {
-		closeModal();
-
+	function applyConsequences() {
 		for (const { key, value } of eventData.consequences) {
 			if (statusMap.has(key)) {
 				if (status[key]) {
@@ -64,7 +57,11 @@ export function Event({ eventData, closeModal }) {
 				addItem({ key, value });
 			}
 		}
+	}
 
+	function closeEventModal() {
+		closeModal();
+		applyConsequences();
 		addRecord(eventData.record);
 	}
 
@@ -75,9 +72,20 @@ export function Event({ eventData, closeModal }) {
 			))}
 
 			<div>
-				{eventData.consequences.map(({ key: eventKey, value }, index) =>
-					getEventConsequence({ eventKey, value, index })
-				)}
+				{eventData.consequences.map(({ key: eventKey, value }, index) => {
+					const { description, newValue } = getEventConsequence({
+						eventKey,
+						value,
+					});
+
+					if (!description) return;
+
+					return (
+						<span key={index}>
+							{description}: {newValue}
+						</span>
+					);
+				})}
 			</div>
 
 			<Buttons maxWidth="100%">
