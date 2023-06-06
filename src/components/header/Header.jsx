@@ -9,8 +9,8 @@ export default function Header() {
 	const statusKeys = Object.keys(status);
 
 	function getTime(time) {
-		const endDayTime = 600;
-		const startNightTime = 780;
+		const endDayTime = 600; // 17h
+		const startNightTime = 780; // 20h
 
 		if (time === "isDay") return status.time <= endDayTime;
 		if (time === "isSunset") {
@@ -21,27 +21,25 @@ export default function Header() {
 		return false;
 	}
 
-	function getStatus({ statusKey, index }) {
-		if (!statusMap.has(statusKey)) return;
+	function getStatus(statusKey) {
+		if (!statusMap.has(statusKey)) return {};
 
-		const currentStatus = statusMap.get(statusKey);
-		const value = status[statusKey];
-		const content = `${value}${
-			currentStatus.maxValue ? ` / ${currentStatus.maxValue}` : ""
-		}`;
-		let statusIcon = currentStatus.icon;
+		const originalStatus = statusMap.get(statusKey);
+		const currentValue = status[statusKey];
+
+		const content = originalStatus.maxValue
+			? `${currentValue} / ${originalStatus.maxValue}`
+			: `${currentValue}`;
+
+		let icon = originalStatus.icon;
 
 		if (statusKey === STATUS_KEYS.mental) {
-			statusIcon =
-				value <= 25 ? currentStatus.icons.sad : currentStatus.icons.happy;
+			icon = currentValue <= 25
+					? originalStatus.icons.sad
+					: originalStatus.icons.happy;
 		}
 
-		return (
-			<div key={index}>
-				<Icons type={statusIcon} />
-				<span>{content}</span>
-			</div>
-		);
+		return { content, icon };
 	}
 
 	return (
@@ -66,7 +64,18 @@ export default function Header() {
 			</Progress>
 
 			<div>
-				{statusKeys.map((statusKey, index) => getStatus({ statusKey, index }))}
+				{statusKeys.map((statusKey, index) => {
+					const { content, icon } = getStatus(statusKey);
+
+					if (!content) return;
+
+					return (
+						<div key={index}>
+							<Icons type={icon} />
+							<span>{content}</span>
+						</div>
+					);
+				})}
 			</div>
 		</Wrapper>
 	);
