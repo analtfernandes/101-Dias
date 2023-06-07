@@ -4,54 +4,61 @@ import { useLayoutEffectsContext } from "../../contexts";
 export function TransitionFade() {
 	const { fadeConfig, setFadeConfig } = useLayoutEffectsContext();
 
-	function initFade() {
-		setFadeConfig((prev) => ({ ...prev, init: false }));
+	function setInitialFade() {
+		setFadeConfig((prev) => ({
+			...prev,
+			isVisible: true,
+			display: true,
+			type: "",
+		}));
 
 		setTimeout(() => {
-			setFadeConfig((prev) => ({ ...prev, isVisible: true }));
-		}, 20);
+			setFinishFade();
+		}, fadeConfig.timeout || 1000);
 	}
 
 	function setDefaultFade() {
-		setTimeout(() => {
-			setFadeConfig((prev) => ({ ...prev, isVisible: false }));
-		}, fadeConfig.timeout || 2000);
+		setStartFade();
 
 		setTimeout(() => {
-			setFadeConfig((prev) => ({ ...prev, display: false }));
-		}, fadeConfig.timeout + 1500 || 3000);
+			setFinishFade();
+		}, fadeConfig.timeout || 3000);
 	}
 
-	function setCustomFade() {
-		if (fadeConfig.isVisible) {
+	function setStartFade() {
+		setFadeConfig((prev) => ({
+			...prev,
+			display: true,
+			type: "",
+		}));
+
+		setTimeout(() => {
 			setFadeConfig((prev) => ({
 				...prev,
-				isVisible: false,
-				await: false,
+				isVisible: true,
 			}));
-
-			setTimeout(() => {
-				setFadeConfig((prev) => ({
-					...prev,
-					display: false,
-				}));
-			}, fadeConfig.timeout + 1000 || 2000);
-		} else {
-			setTimeout(() => {
-				setFadeConfig((prev) => ({
-					...prev,
-					isVisible: true,
-					await: false,
-				}));
-			}, 20);
-		}
+		}, 20);
 	}
 
-	if (!fadeConfig.await && fadeConfig.init && !fadeConfig.custom) initFade();
-	if (!fadeConfig.await && fadeConfig.isVisible && !fadeConfig.custom) {
-		setDefaultFade();
+	function setFinishFade() {
+		setFadeConfig((prev) => ({
+			...prev,
+			isVisible: false,
+			type: "",
+		}));
+
+		setTimeout(() => {
+			setFadeConfig((prev) => ({
+				...prev,
+				display: false,
+			}));
+		}, fadeConfig.timeout + 1500 || 2000);
 	}
-	if (fadeConfig.await && fadeConfig.custom) setCustomFade();
+
+	if (fadeConfig.type === "initial") setInitialFade();
+	if (fadeConfig.type === "default") setDefaultFade();
+	if (fadeConfig.type === "start") setStartFade();
+	if (fadeConfig.type === "finish") setFinishFade();
 
 	return (
 		<Fade

@@ -11,7 +11,7 @@ export default function Button({ text, states, disabled, buttonKey: key }) {
 
 	const isSleepButton = key === STATUS_KEYS.sleep;
 
-	function updateStatusFunction() {
+	function applyConsenquences() {
 		for (const { state, value } of states) {
 			updateStatus({ state, value });
 		}
@@ -19,33 +19,28 @@ export default function Button({ text, states, disabled, buttonKey: key }) {
 
 	function sleep() {
 		setFadeConfig({
-			await: true,
-			display: true,
-			custom: true,
+			type: "start",
 		});
 
 		const saveGameProps = {
-			callback: updateStatusFunction,
+			callback: applyConsenquences,
 			data: { time: 0, day: status.day + 1 },
 		};
 
 		setTimeout(() => {
-			saveGame(saveGameProps).then(() =>
-				setFadeConfig({
-					await: true,
-					display: true,
-					isVisible: true,
-					custom: true,
-					timeout: 1000,
-				})
-			);
+			saveGame(saveGameProps).then(() => {
+				setFadeConfig((prev) => ({
+					...prev,
+					type: "finish",
+				}));
+			});
 		}, 1500);
 	}
 
 	return (
 		<Wrapper
 			disabled={disabled}
-			onClick={isSleepButton ? sleep : updateStatusFunction}
+			onClick={isSleepButton ? sleep : applyConsenquences}
 		>
 			{text}
 		</Wrapper>
