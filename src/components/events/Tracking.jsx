@@ -16,9 +16,9 @@ export function Tracking() {
 		const HOUR_FOUR = 240;
 		const day = status.day;
 		const time = status.time;
-	
+
 		if (time % HOUR_FOUR === 0) saveGame();
-	
+
 		if (!events[day] && !choiceEvents[day]) return;
 
 		eventData.current = choiceEvents[day][time];
@@ -40,6 +40,8 @@ export function Tracking() {
 			modalConfig={modalConfig}
 			setModalConfig={setModalConfig}
 			eventData={eventData.current}
+			saveGame={saveGame}
+			nextTime={status.time + 1}
 		/>
 	);
 }

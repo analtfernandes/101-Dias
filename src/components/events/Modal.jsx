@@ -7,7 +7,13 @@ import { Event } from "./Event.jsx";
 
 ReactModal.setAppElement("#root");
 
-export function Modal({ modalConfig, setModalConfig, eventData }) {
+export function Modal({
+	modalConfig,
+	setModalConfig,
+	eventData,
+	saveGame,
+	nextTime,
+}) {
 	const customReactModalStyle = {
 		overlay: {
 			backgroundColor: "rgba(0, 0, 0, 0.6)",
@@ -18,8 +24,11 @@ export function Modal({ modalConfig, setModalConfig, eventData }) {
 		},
 	};
 
-	function closeModal(config = { isOpen: false }) {
+	function closeModal(config = { isOpen: false }, newGameData = {}) {
 		setModalConfig({ ...config });
+		setTimeout(() => {
+			saveGame({ data: { ...newGameData, time: nextTime } });
+		}, 200);
 	}
 
 	return (

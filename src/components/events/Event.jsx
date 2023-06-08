@@ -34,35 +34,54 @@ export function Event({ eventData, closeModal }) {
 		return { description, newValue };
 	}
 
-	function applyConsequences() {
-		for (const { key, value } of eventData.consequences) {
-			if (statusMap.has(key)) {
-				if (status[key]) {
-					updateStatus({ state: key, value });
-					continue;
-				}
+	function upsertStatus({ key, value }, newData) {
+		if (status[key]) {
+			updateStatus({ state: key, value });
+			newData[key] = status[key] + value;
+			return;
+		}
 
-				addStatus({ key, value });
-				addButton({ key });
+		addStatus({ key, value });
+		addButton({ key });
+		newData[key] = value;
+	}
+
+	function upsertStorage({ key, value }, newData) {
+		const hasKey = storage.find((storage) => storage.key === key);
+
+		if (hasKey) {
+			const item = newData.storage.find((storage) => storage.key === key);
+			item.quantity = value;
+
+			updateItem({ key, value });
+
+			return;
+		}
+
+		addItem({ key, value });
+		newData.storage.push({ key, quantity: value });
+	}
+
+	function applyConsequences() {
+		const newData = { storage: storage.map(({ key, quantity }) => ({ key, quantity })) };
+
+		for (const consequence of eventData.consequences) {
+			if (statusMap.has(consequence.key)) {
+				upsertStatus(consequence, newData);
 			}
 
-			if (storageMap.has(key)) {
-				const hasKey = storage.find((storage) => storage.key === key);
-
-				if (hasKey) {
-					updateItem({ key, value });
-					continue;
-				}
-
-				addItem({ key, value });
+			if (storageMap.has(consequence.key)) {
+				upsertStorage(consequence, newData);
 			}
 		}
+
+		return newData;
 	}
 
 	function closeEventModal() {
-		closeModal();
-		applyConsequences();
+		const newData = applyConsequences();
 		addRecord(eventData.record);
+		closeModal(null, newData);
 	}
 
 	return (
