@@ -51,7 +51,7 @@ export function Event({ eventData, closeModal }) {
 
 		if (hasKey) {
 			const item = newData.storage.find((storage) => storage.key === key);
-			item.quantity = value;
+			item.quantity += value;
 
 			updateItem({ key, value });
 
