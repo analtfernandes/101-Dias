@@ -54,4 +54,6 @@ const choiceEvents = {
 	},
 };
 
-export { events, choiceEvents };
+const randomEvents = [events[1][20], events[1][22]];
+
+export { events, choiceEvents, randomEvents };

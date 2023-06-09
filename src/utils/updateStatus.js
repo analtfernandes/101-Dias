@@ -1,6 +1,4 @@
-function sort() {
-	return Math.random() - 0.5;
-}
+import { generateRandomInt } from "./generateRandomInt";
 
 function update_time({ status, value }) {
 	const time = status.time + value;
@@ -13,7 +11,7 @@ function update_day({ status, value }) {
 }
 
 function update_written({ status, value }) {
-	const sortNumber = sort();
+	const sortNumber = generateRandomInt();
 
 	let written = status.written + value;
 	let hungry = status.hungry;
@@ -56,7 +54,7 @@ function update_hungry({ status, value }) {
 }
 
 function update_physical({ status, value }) {
-	const sortNumber = sort();
+	const sortNumber = generateRandomInt();
 
 	let physical = status.physical + value;
 	let hungry = status.hungry;
