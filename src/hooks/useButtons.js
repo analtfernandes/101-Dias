@@ -6,9 +6,9 @@ import { useLocalStorage } from "./index";
 
 const { data: buttonsData } = buttonsEntity;
 
-function sortButtonsByDisabledAttribute(curr) {
-	if (curr.disabled) return 1;
-	if (!curr.disabled) return 0;
+function sortButtonsByDisabledAttribute(_, curr) {
+	if (curr.disabled) return -1;
+	return 1;
 }
 
 function reducer(buttons, action) {
@@ -18,7 +18,7 @@ function reducer(buttons, action) {
 
 		newButtons.sort(sortButtonsByDisabledAttribute);
 
-		return [...newButtons];
+		return newButtons;
 	}
 
 	if (action.do === "remove") {
