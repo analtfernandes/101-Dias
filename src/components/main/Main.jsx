@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Tracking } from "../events/Tracking";
 import DayRecords from "../dayRecords/DayRecords";
 import Storage from "../storage/Storage";
+import { Message } from "../messages/Message";
 
 export default function Main() {
 	return (
@@ -16,6 +17,8 @@ export default function Main() {
 			<Container width="35%" maxWidth="450px" margin="0">
 				<Storage />
 			</Container>
+
+			<Message />
 		</Wrapper>
 	);
 }
@@ -26,6 +29,7 @@ const Wrapper = styled.main`
 	align-items: center;
 	margin: 60px 0 0;
 	padding: 0 15px;
+	position: relative;
 `;
 
 const Container = styled.div`

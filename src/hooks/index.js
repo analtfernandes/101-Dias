@@ -5,3 +5,4 @@ export * from "./useSave";
 export * from "./useStatus";
 export * from "./useStorage";
 export * from "./useRandomEvent";
+export * from "./useThoughts";
