@@ -56,6 +56,14 @@ const data = [
 			icon: ICONS_NAMES.book,
 		},
 	],
+	[
+		STATUS_KEYS.pet,
+		{
+			initial: 0,
+			description: "pet",
+			icon: ICONS_NAMES.paw,
+		},
+	],
 ];
 
 const dataFreeze = freeze.array(data);
