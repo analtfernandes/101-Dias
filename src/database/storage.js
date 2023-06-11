@@ -26,6 +26,38 @@ const data = [
 			icon: ICONS_NAMES.library,
 		},
 	],
+	[
+		STORAGE_KEYS.battery,
+		{
+			initialQuantity: 0,
+			description: "pilhas",
+			icon: ICONS_NAMES.battery,
+		},
+	],
+	[
+		STORAGE_KEYS.radio,
+		{
+			initialQuantity: 0,
+			description: "rádio",
+			icon: ICONS_NAMES.radio,
+		},
+	],
+	[
+		STORAGE_KEYS.map,
+		{
+			initialQuantity: 0,
+			description: "mapa",
+			icon: ICONS_NAMES.map,
+		},
+	],
+	[
+		STORAGE_KEYS.coffee,
+		{
+			initialQuantity: 0,
+			description: "café",
+			icon: ICONS_NAMES.coffee,
+		},
+	],
 ];
 
 const dataFreeze = freeze.array(data);

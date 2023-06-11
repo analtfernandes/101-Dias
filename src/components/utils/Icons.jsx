@@ -1,6 +1,12 @@
-import { FaMedkit } from "react-icons/fa";
+import { FaMedkit, FaMapMarked } from "react-icons/fa";
+import { MdRadio } from "react-icons/md";
 import { AiFillCloseCircle } from "react-icons/ai";
-import { GiCannedFish, GiSunset } from "react-icons/gi";
+import {
+	GiCannedFish,
+	GiSunset,
+	GiBatteryPack,
+	GiCoffeeCup,
+} from "react-icons/gi";
 import {
 	IoCreate,
 	IoBarbellOutline,
@@ -33,6 +39,10 @@ const ICONS = {
 	[ICONS_NAMES.moon]: IoMoon,
 	[ICONS_NAMES.paw]: IoPaw,
 	[ICONS_NAMES.close]: AiFillCloseCircle,
+	[ICONS_NAMES.battery]: GiBatteryPack,
+	[ICONS_NAMES.coffee]: GiCoffeeCup,
+	[ICONS_NAMES.radio]: MdRadio,
+	[ICONS_NAMES.map]: FaMapMarked,
 };
 
 export function Icons({ type, ...otherProps }) {

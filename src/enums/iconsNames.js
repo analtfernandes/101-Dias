@@ -13,6 +13,10 @@ const ICONS_NAMES = Object.freeze({
 	sunset: "sunset",
 	moon: "moon",
 	paw: "paw",
+	battery: "battery",
+	coffee: "coffee",
+	radio: "radio",
+	map: "map",
 	close: "close",
 });
 
