@@ -63,6 +63,8 @@ function reducer(buttons, action) {
 
 function getInitialButtons(localStorageHook) {
 	const status = localStorageHook.getData();
+	const storage = status.storage?.map(({ key }) => key) || [];
+	const keys = new Set([...Object.keys(status), ...storage]);
 
 	const currentButtons = buttonsData.filter(({ key }) => {
 		const isBasicButton =
@@ -71,7 +73,12 @@ function getInitialButtons(localStorageHook) {
 			key === STATUS_KEYS.physical ||
 			key === STATUS_KEYS.sleep;
 
-		return status?.hasOwnProperty(key) || isBasicButton;
+		if (key === STATUS_KEYS.unhealth) {
+			const isSick = status.unhealth > 0;
+			return isSick;
+		}
+
+		return isBasicButton || keys.has(key);
 	});
 
 	currentButtons.sort(sortButtonsByDisabledAttribute);

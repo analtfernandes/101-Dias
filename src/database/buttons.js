@@ -1,4 +1,4 @@
-import { STATUS_KEYS } from "../enums";
+import { STATUS_KEYS, STORAGE_KEYS } from "../enums";
 import { format, freeze } from "./formatHelper";
 
 const data = [
@@ -33,6 +33,33 @@ const data = [
 			{ state: STATUS_KEYS.time, value: 1 },
 			{ state: STATUS_KEYS.read, value: 1 },
 		],
+		disabled: false,
+	},
+	{
+		key: STATUS_KEYS.pet,
+		text: "Brincar com {pet}",
+		states: [
+			{ state: STATUS_KEYS.time, value: 1 },
+			{ state: STATUS_KEYS.pet, value: 1 },
+		],
+		disabled: false,
+	},
+	{
+		key: STATUS_KEYS.unhealth,
+		text: "Usar remédios/ curativos",
+		states: [{ state: STATUS_KEYS.unhealth, value: -1 }],
+		disabled: false,
+	},
+	{
+		key: STORAGE_KEYS.radio,
+		text: "Ligar o rádio",
+		states: [],
+		disabled: false,
+	},
+	{
+		key: STORAGE_KEYS.coffee,
+		text: "Beber café",
+		states: [],
 		disabled: false,
 	},
 	{
