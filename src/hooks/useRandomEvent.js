@@ -33,6 +33,22 @@ function useRandomEvent() {
 		timeInterval.current = timeIntervals[index];
 	}
 
+	function getEventConsequences(consequences) {
+		const newConsequences = [];
+
+		for (const { key, value, min = 1, max = min + 2 } of consequences) {
+			if (value !== "random") {
+				newConsequences.push({ key, value });
+				continue;
+			}
+
+			const newValue = generateRandomInt(min, max);
+			newConsequences.push({ key, value: newValue });
+		}
+
+		return newConsequences;
+	}
+
 	function getEvent(time) {
 		if (!isValidTime(time) || !isLucky()) return null;
 
@@ -40,7 +56,10 @@ function useRandomEvent() {
 		const max = randomEvents.length;
 		const index = generateRandomInt(min, max);
 
-		return randomEvents[index];
+		const event = randomEvents[index];
+		const consequences = getEventConsequences(event.consequences);
+
+		return { ...event, consequences };
 	}
 
 	return { getEvent, setTimeInterval };
