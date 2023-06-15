@@ -8,15 +8,17 @@ import { Modal } from "./Modal.jsx";
 export function Tracking() {
 	const [modalConfig, setModalConfig] = useState({ isOpen: false, type: "" });
 	const eventData = useRef({});
+
 	const { status } = useStatusContext();
 	const randomEvent = useRandomEvent();
 	const choiceEvent = useChoiceEvent();
 	const event = useEvent();
 	const saveGame = useSave();
 
+	const END_DAY_HOUR = 960;
+	const HOUR_FOUR = 240;
+
 	useEffect(() => {
-		const END_DAY_HOUR = 960;
-		const HOUR_FOUR = 240;
 		const day = status.day;
 		const time = status.time;
 
@@ -33,14 +35,7 @@ export function Tracking() {
 			return;
 		}
 
-		eventData.current = event.getEvent({ day, time });
-
-		if (eventData.current) {
-			setModalConfig({ isOpen: true, type: MODAL_TYPES.event });
-			return;
-		}
-
-		eventData.current = randomEvent.getEvent(time);
+		eventData.current = event.getEvent({ day, time }) || randomEvent.getEvent(time);
 
 		if (eventData.current) {
 			setModalConfig({ isOpen: true, type: MODAL_TYPES.event });
