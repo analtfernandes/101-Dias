@@ -224,7 +224,7 @@ const choiceEvents = {
 	1: {
 		481: {
 			title: "Expedição",
-			description: `Dia de expedição. Saia para procurar suprimentos.&&\nO que fazer?`,
+			description: `Dia de expedição. Saia para procurar suprimentos.`,
 			buttons: [
 				{
 					text: "Sair",
@@ -250,7 +250,7 @@ const choiceEvents = {
 	15: {
 		367: {
 			title: "Expedição",
-			description: `Dia de expedição. Saia para procurar suprimentos.&&\nO que fazer?`,
+			description: `Dia de expedição. Saia para procurar suprimentos.`,
 			buttons: [
 				{
 					text: "Sair",
@@ -276,7 +276,7 @@ const choiceEvents = {
 	18: {
 		609: {
 			title: "Telefone",
-			description: `Sobre a mesa, o som estridente de seu telefone tocou.&&\nO que fazer?`,
+			description: `Sobre a mesa, o som estridente de seu telefone tocou.`,
 			buttons: [
 				{
 					text: "Atender",
@@ -302,7 +302,7 @@ const choiceEvents = {
 	22: {
 		121: {
 			title: "Batidas na porta",
-			description: `Você ouviu apressadas batidas: há alguém em sua porta.&&\nO que fazer?`,
+			description: `Você ouviu apressadas batidas: há alguém em sua porta.`,
 			buttons: [
 				{
 					text: "Abrir a porta",
@@ -316,8 +316,10 @@ const choiceEvents = {
 					text: "Não abrir a porta",
 					events: {
 						data: choiceEventsConsequences[2122],
-						probabilities: [100],
-						record: null,
+						probabilities: [10],
+						record: {
+							text: `Você ouviu batidas na porta, mas decidiu não abrir.`,
+						},
 					},
 				},
 			],
@@ -326,7 +328,7 @@ const choiceEvents = {
 	30: {
 		365: {
 			title: "Expedição",
-			description: `Dia de expedição. Saia para procurar suprimentos.&&\nO que fazer?`,
+			description: `Dia de expedição. Saia para procurar suprimentos.`,
 			buttons: [
 				{
 					text: "Sair",
@@ -352,7 +354,7 @@ const choiceEvents = {
 	33: {
 		846: {
 			title: "Batidas na porta",
-			description: `Você ouviu apressadas batidas: há alguém em sua porta.&&\nO que fazer?`,
+			description: `Você ouviu apressadas batidas: há alguém em sua porta.`,
 			buttons: [
 				{
 					text: "Abrir a porta",
@@ -376,7 +378,7 @@ const choiceEvents = {
 	37: {
 		363: {
 			title: "Telefone",
-			description: `Sobre a mesa, o som estridente de seu telefone tocou.&&\nO que fazer?`,
+			description: `Sobre a mesa, o som estridente de seu telefone tocou.`,
 			buttons: [
 				{
 					text: "Atender",
@@ -402,7 +404,7 @@ const choiceEvents = {
 	45: {
 		360: {
 			title: "Expedição",
-			description: `Dia de expedição. Saia para procurar suprimentos.&&\nO que fazer?`,
+			description: `Dia de expedição. Saia para procurar suprimentos.`,
 			buttons: [
 				{
 					text: "Sair",
@@ -428,7 +430,7 @@ const choiceEvents = {
 	48: {
 		900: {
 			title: "Telefone",
-			description: `Sobre a mesa, o som estridente de seu telefone tocou.&&\nO que fazer?`,
+			description: `Sobre a mesa, o som estridente de seu telefone tocou.`,
 			buttons: [
 				{
 					text: "Atender",
@@ -454,7 +456,7 @@ const choiceEvents = {
 	50: {
 		668: {
 			title: "Problemas no rádio",
-			description: `Seu rádio quebrou!&&\nO que fazer?`,
+			description: `Seu rádio quebrou!`,
 			buttons: [
 				{
 					text: "Tentar consertar",
@@ -478,7 +480,7 @@ const choiceEvents = {
 	52: {
 		420: {
 			title: "Batidas na porta",
-			description: `Você ouviu apressadas batidas: há alguém em sua porta.&&\nO que fazer?`,
+			description: `Você ouviu apressadas batidas: há alguém em sua porta.`,
 			buttons: [
 				{
 					text: "Abrir a porta",
@@ -502,7 +504,7 @@ const choiceEvents = {
 	60: {
 		364: {
 			title: "Expedição",
-			description: `Dia de expedição. Saia para procurar suprimentos.&&\nO que fazer?`,
+			description: `Dia de expedição. Saia para procurar suprimentos.`,
 			buttons: [
 				{
 					text: "Sair",
@@ -528,7 +530,7 @@ const choiceEvents = {
 	68: {
 		486: {
 			title: "Batidas na porta",
-			description: `Você ouviu apressadas batidas: há alguém em sua porta.&&\nO que fazer?`,
+			description: `Você ouviu apressadas batidas: há alguém em sua porta.`,
 			buttons: [
 				{
 					text: "Abrir a porta",
@@ -552,7 +554,7 @@ const choiceEvents = {
 	73: {
 		60: {
 			title: "Telefone",
-			description: `Sobre a mesa, o som estridente de seu telefone tocou.&&\nO que fazer?`,
+			description: `Sobre a mesa, o som estridente de seu telefone tocou.`,
 			buttons: [
 				{
 					text: "Atender",
@@ -578,7 +580,7 @@ const choiceEvents = {
 	75: {
 		360: {
 			title: "Expedição",
-			description: `Dia de expedição. Saia para procurar suprimentos.&&\nO que fazer?`,
+			description: `Dia de expedição. Saia para procurar suprimentos.`,
 			buttons: [
 				{
 					text: "Sair",
@@ -604,7 +606,7 @@ const choiceEvents = {
 	80: {
 		68: {
 			title: "Batidas na porta",
-			description: `Você ouviu apressadas batidas: há alguém em sua porta.&&\nO que fazer?`,
+			description: `Você ouviu apressadas batidas: há alguém em sua porta.`,
 			buttons: [
 				{
 					text: "Abrir a porta",
@@ -628,7 +630,7 @@ const choiceEvents = {
 	86: {
 		601: {
 			title: "Batidas na porta",
-			description: `Você ouviu apressadas batidas: há alguém em sua porta.&&\nO que fazer?`,
+			description: `Você ouviu apressadas batidas: há alguém em sua porta.`,
 			buttons: [
 				{
 					text: "Abrir a porta",
@@ -652,7 +654,7 @@ const choiceEvents = {
 	90: {
 		360: {
 			title: "Expedição",
-			description: `Dia de expedição. Saia para procurar suprimentos.&&\nO que fazer?`,
+			description: `Dia de expedição. Saia para procurar suprimentos.`,
 			buttons: [
 				{
 					text: "Sair",
@@ -678,7 +680,7 @@ const choiceEvents = {
 	97: {
 		367: {
 			title: "Batidas na porta",
-			description: `Você ouviu apressadas batidas: há alguém em sua porta.&&\nO que fazer?`,
+			description: `Você ouviu apressadas batidas: há alguém em sua porta.`,
 			buttons: [
 				{
 					text: "Abrir a porta",
@@ -702,7 +704,7 @@ const choiceEvents = {
 	100: {
 		720: {
 			title: "Telefone",
-			description: `Sobre a mesa, o som estridente de seu telefone tocou.&&\nO que fazer?`,
+			description: `Sobre a mesa, o som estridente de seu telefone tocou.`,
 			buttons: [
 				{
 					text: "Atender",
