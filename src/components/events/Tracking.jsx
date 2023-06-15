@@ -1,7 +1,13 @@
 import { useEffect, useState, useRef } from "react";
 import { useStatusContext } from "../../contexts";
 import { MODAL_TYPES } from "../../enums";
-import { useSave, useRandomEvent, useChoiceEvent, useEvent } from "../../hooks";
+import {
+	useSave,
+	useRandomEvent,
+	useChoiceEvent,
+	useEvent,
+	usePet,
+} from "../../hooks";
 
 import { Modal } from "./Modal.jsx";
 
@@ -13,6 +19,7 @@ export function Tracking() {
 	const randomEvent = useRandomEvent();
 	const choiceEvent = useChoiceEvent();
 	const event = useEvent();
+	const pet = usePet();
 	const saveGame = useSave();
 
 	const END_DAY_HOUR = 960;
@@ -26,7 +33,9 @@ export function Tracking() {
 
 		if (time % HOUR_FOUR === 0) saveGame();
 
-		if (time === 0) randomEvent.setTimeInterval();
+		if (time === 0) {
+			randomEvent.setTimeInterval();
+		}
 
 		eventData.current = choiceEvent.getEvent({ day, time });
 
@@ -35,10 +44,18 @@ export function Tracking() {
 			return;
 		}
 
-		eventData.current = event.getEvent({ day, time }) || randomEvent.getEvent(time);
+		eventData.current =
+			event.getEvent({ day, time }) || randomEvent.getEvent(time);
+
+		if (time === 0 && day > 7)
+			eventData.current = pet.getGift({ day, time, pet: status.pet });
 
 		if (eventData.current) {
 			setModalConfig({ isOpen: true, type: MODAL_TYPES.event });
+		}
+
+		if (day === 7 && time === 780) {
+			setTimeout(pet.namingPet, 500);
 		}
 	}, [status.time]);
 

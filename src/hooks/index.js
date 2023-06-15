@@ -8,3 +8,4 @@ export * from "./useRandomEvent";
 export * from "./useChoiceEvent";
 export * from "./useEvent";
 export * from "./useThoughts";
+export * from "./usePet";

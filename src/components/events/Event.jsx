@@ -25,10 +25,13 @@ export function Event({ eventData, closeModal }) {
 		return storageMap.has(key) || statusMap.has(key);
 	}
 
-	function getEventConsequence({ eventKey, value }) {
-		if (value === 0 || !keyExist(eventKey)) return {};
+	function getEventConsequence({ eventKey, value, showIfDoesntExist }) {
+		if ((value === 0 || !keyExist(eventKey)) && !showIfDoesntExist) return {};
 
 		const newValue = value < 0 ? value.toString() : `+${value}`;
+
+		if (showIfDoesntExist) return { description: eventKey, newValue };
+
 		const { description } = storageMap.get(eventKey) || statusMap.get(eventKey);
 
 		return { description, newValue };
@@ -63,7 +66,9 @@ export function Event({ eventData, closeModal }) {
 	}
 
 	function applyConsequences() {
-		const newData = { storage: storage.map(({ key, quantity }) => ({ key, quantity })) };
+		const newData = {
+			storage: storage.map(({ key, quantity }) => ({ key, quantity })),
+		};
 
 		for (const consequence of eventData.consequences) {
 			if (statusMap.has(consequence.key)) {
@@ -91,20 +96,23 @@ export function Event({ eventData, closeModal }) {
 			))}
 
 			<div>
-				{eventData.consequences.map(({ key: eventKey, value }, index) => {
-					const { description, newValue } = getEventConsequence({
-						eventKey,
-						value,
-					});
+				{eventData.consequences.map(
+					({ key: eventKey, value, showIfDoesntExist = false }, index) => {
+						const { description, newValue } = getEventConsequence({
+							eventKey,
+							value,
+							showIfDoesntExist,
+						});
 
-					if (!description) return;
+						if (!description) return;
 
-					return (
-						<span key={index}>
-							{description}: {newValue}
-						</span>
-					);
-				})}
+						return (
+							<span key={index}>
+								{description}: {newValue}
+							</span>
+						);
+					}
+				)}
 			</div>
 
 			<Buttons maxWidth="100%">

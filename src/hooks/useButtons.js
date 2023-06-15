@@ -13,7 +13,14 @@ function sortButtonsByDisabledAttribute(_, curr) {
 
 function reducer(buttons, action) {
 	if (action.do === "add") {
-		const newButton = buttonsData.find(({ key }) => key === action.key);
+		let newButton = buttonsData.find(({ key }) => key === action.key);
+
+		if (action.key === STATUS_KEYS.pet) {
+			newButton = { ...newButton };
+			const name = action.data.pet?.name || "seu gato";
+			newButton.text = newButton.text.replace("{pet}", name);
+		}
+
 		const newButtons = [...buttons, newButton];
 
 		newButtons.sort(sortButtonsByDisabledAttribute);
@@ -66,7 +73,7 @@ function getInitialButtons(localStorageHook) {
 	const storage = status.storage?.map(({ key }) => key) || [];
 	const keys = new Set([...Object.keys(status), ...storage]);
 
-	const currentButtons = buttonsData.filter(({ key }) => {
+	const currentButtons = buttonsData.filter(({ key, ...data }) => {
 		const isBasicButton =
 			key === STATUS_KEYS.written ||
 			key === STATUS_KEYS.hungry ||
@@ -78,8 +85,19 @@ function getInitialButtons(localStorageHook) {
 			return isSick;
 		}
 
+		if (key === STATUS_KEYS.pet) return false;
+
 		return isBasicButton || keys.has(key);
 	});
+
+	if (status.pet) {
+		let petButton = buttonsData.find(({ key }) => key === STATUS_KEYS.pet);
+
+		petButton = { ...petButton };
+		petButton.text = petButton.text.replace("{pet}", status.pet.name);
+
+		currentButtons.push(petButton);
+	}
 
 	currentButtons.sort(sortButtonsByDisabledAttribute);
 
@@ -95,7 +113,7 @@ function useButtons() {
 	);
 
 	function addButton({ key, text = "" }) {
-		return dispatch({ do: "add", key, text });
+		return dispatch({ do: "add", key, text, data: localStorage.getData() });
 	}
 
 	function removeButton({ key }) {

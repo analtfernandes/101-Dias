@@ -85,6 +85,11 @@ function update_read({ status, value }) {
 	return { read };
 }
 
+function update_pet({ status, value }) {
+	const pet = status.pet + value;
+	return { pet };
+}
+
 const updateStatusFunctions = {
 	update_time,
 	update_day,
@@ -93,6 +98,7 @@ const updateStatusFunctions = {
 	update_physical,
 	update_mental,
 	update_read,
+	update_pet,
 };
 
 export { updateStatusFunctions };

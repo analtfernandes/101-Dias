@@ -12,7 +12,7 @@ function useSave() {
 	const localStorageHook = useLocalStorage();
 
 	const defaultProps = { callback: () => {}, data: {} };
-	const timeoutResolve = 2000;
+	const timeoutResolve = 1000;
 
 	return ({ callback, data } = defaultProps) => {
 		return new Promise((resolve) => {
@@ -27,6 +27,11 @@ function useSave() {
 				quantity,
 			}));
 			const currentData = { ...status, storage: formattedStorage, ...data };
+			const originalData = localStorageHook.getData();
+
+			if (originalData.pet) {
+				currentData.pet = { ...originalData.pet, count: status.pet || 0 };
+			}
 
 			localStorageHook.set(currentData);
 

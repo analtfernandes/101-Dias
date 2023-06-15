@@ -50,6 +50,7 @@ function reducer(status, action) {
 function getInitialStatus(localStorageHook) {
 	const { storage, ...status } = localStorageHook.getData();
 
+	if (status.pet) return { ...status, pet: status.pet.count };
 	if (status.day) return status;
 
 	const data = {
