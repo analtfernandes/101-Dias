@@ -2,7 +2,7 @@ import { STATUS_KEYS, STORAGE_KEYS } from "../enums";
 
 const events = {
 	1: {
-		240: {
+		185: {
 			description: `Revirando as gavetas de seu quarto e cozinha, você encontrou livros.`,
 			consequences: [
 				{ key: STATUS_KEYS.time, value: 30 },
@@ -15,7 +15,7 @@ const events = {
 		},
 	},
 	3: {
-		600: {
+		602: {
 			description: `Você ouviu um barulho no porão. Ao investigar, viu um vulto saindo correndo 
 			e sumindo em meio às caixas.&&\nNada achou ao procurar pelo ser novamente.`,
 			consequences: [{ key: STATUS_KEYS.time, value: 30 }],
@@ -25,7 +25,7 @@ const events = {
 		},
 	},
 	4: {
-		60: {
+		61: {
 			description: `Como no dia anterior, você ouviu um barulho no porão. Mesmo com passos silenciosos, 
 			você não conseguiu supreender aquele animal misterioso que fugiu novamente.`,
 			consequences: [{ key: STATUS_KEYS.time, value: 30 }],
@@ -49,7 +49,7 @@ const events = {
 		},
 	},
 	6: {
-		840: {
+		848: {
 			description: `Mesmo sem nenhum barulho no porão, você decidiu deixar um pouco de comida para o seu visitante, 
 			já que, nessa manhã, a comida deixada ontem havia desaparecido.`,
 			consequences: [
@@ -222,24 +222,503 @@ const choiceEventsConsequences = {
 
 const choiceEvents = {
 	1: {
-		20: {
-			title: "Barulho no porão",
-			description: `Enquanto mergulhava em seus pensamentos,&&\n
-				você ouviu um barulho vindo do porão.`,
+		481: {
+			title: "Expedição",
+			description: `Dia de expedição. Saia para procurar suprimentos.&&\nO que fazer?`,
 			buttons: [
 				{
-					text: "Investigar",
-					onClick: {
-						event: events[1][20],
-						record: events[1][20].record,
+					text: "Sair",
+					events: {
+						data: choiceEventsConsequences[1115],
+						probabilities: [100],
+						record: null,
 					},
 				},
 				{
-					text: "Ignorar",
-					onClick: {
-						event: null,
+					text: "Não sair",
+					events: {
+						data: null,
+						probabilities: null,
 						record: {
-							text: "Você ouviu um barulho vindo do porão, e ignorou.",
+							text: "Você não foi à expedição.",
+						},
+					},
+				},
+			],
+		},
+	},
+	15: {
+		367: {
+			title: "Expedição",
+			description: `Dia de expedição. Saia para procurar suprimentos.&&\nO que fazer?`,
+			buttons: [
+				{
+					text: "Sair",
+					events: {
+						data: choiceEventsConsequences[1115],
+						probabilities: [100],
+						record: null,
+					},
+				},
+				{
+					text: "Não sair",
+					events: {
+						data: null,
+						probabilities: null,
+						record: {
+							text: "Você não foi à expedição.",
+						},
+					},
+				},
+			],
+		},
+	},
+	18: {
+		609: {
+			title: "Telefone",
+			description: `Sobre a mesa, o som estridente de seu telefone tocou.&&\nO que fazer?`,
+			buttons: [
+				{
+					text: "Atender",
+					events: {
+						data: choiceEventsConsequences[1118],
+						probabilities: [100],
+						record: null,
+					},
+				},
+				{
+					text: "Não atender",
+					events: {
+						data: null,
+						probabilities: null,
+						record: {
+							text: "Seu telefone tocou, mas você não o atendeu.",
+						},
+					},
+				},
+			],
+		},
+	},
+	22: {
+		121: {
+			title: "Batidas na porta",
+			description: `Você ouviu apressadas batidas: há alguém em sua porta.&&\nO que fazer?`,
+			buttons: [
+				{
+					text: "Abrir a porta",
+					events: {
+						data: choiceEventsConsequences[1122],
+						probabilities: [70, 100],
+						record: null,
+					},
+				},
+				{
+					text: "Não abrir a porta",
+					events: {
+						data: choiceEventsConsequences[2122],
+						probabilities: [100],
+						record: null,
+					},
+				},
+			],
+		},
+	},
+	30: {
+		365: {
+			title: "Expedição",
+			description: `Dia de expedição. Saia para procurar suprimentos.&&\nO que fazer?`,
+			buttons: [
+				{
+					text: "Sair",
+					events: {
+						data: choiceEventsConsequences[1115],
+						probabilities: [100],
+						record: null,
+					},
+				},
+				{
+					text: "Não sair",
+					events: {
+						data: null,
+						probabilities: null,
+						record: {
+							text: "Você não foi à expedição.",
+						},
+					},
+				},
+			],
+		},
+	},
+	33: {
+		846: {
+			title: "Batidas na porta",
+			description: `Você ouviu apressadas batidas: há alguém em sua porta.&&\nO que fazer?`,
+			buttons: [
+				{
+					text: "Abrir a porta",
+					events: {
+						data: choiceEventsConsequences[1122],
+						probabilities: [70, 100],
+						record: null,
+					},
+				},
+				{
+					text: "Não abrir a porta",
+					events: {
+						data: choiceEventsConsequences[2122],
+						probabilities: [100],
+						record: null,
+					},
+				},
+			],
+		},
+	},
+	37: {
+		363: {
+			title: "Telefone",
+			description: `Sobre a mesa, o som estridente de seu telefone tocou.&&\nO que fazer?`,
+			buttons: [
+				{
+					text: "Atender",
+					events: {
+						data: choiceEventsConsequences[1137],
+						probabilities: [100],
+						record: null,
+					},
+				},
+				{
+					text: "Não atender",
+					events: {
+						data: null,
+						probabilities: null,
+						record: {
+							text: "Seu telefone tocou, mas você não o atendeu.",
+						},
+					},
+				},
+			],
+		},
+	},
+	45: {
+		360: {
+			title: "Expedição",
+			description: `Dia de expedição. Saia para procurar suprimentos.&&\nO que fazer?`,
+			buttons: [
+				{
+					text: "Sair",
+					events: {
+						data: choiceEventsConsequences[1115],
+						probabilities: [100],
+						record: null,
+					},
+				},
+				{
+					text: "Não sair",
+					events: {
+						data: null,
+						probabilities: null,
+						record: {
+							text: "Você não foi à expedição.",
+						},
+					},
+				},
+			],
+		},
+	},
+	48: {
+		900: {
+			title: "Telefone",
+			description: `Sobre a mesa, o som estridente de seu telefone tocou.&&\nO que fazer?`,
+			buttons: [
+				{
+					text: "Atender",
+					events: {
+						data: choiceEventsConsequences[1148],
+						probabilities: [100],
+						record: null,
+					},
+				},
+				{
+					text: "Não atender",
+					events: {
+						data: null,
+						probabilities: null,
+						record: {
+							text: "Seu telefone tocou, mas você não o atendeu.",
+						},
+					},
+				},
+			],
+		},
+	},
+	50: {
+		668: {
+			title: "Problemas no rádio",
+			description: `Seu rádio quebrou!&&\nO que fazer?`,
+			buttons: [
+				{
+					text: "Tentar consertar",
+					events: {
+						data: choiceEventsConsequences[1150],
+						probabilities: [50, 100],
+						record: null,
+					},
+				},
+				{
+					text: "Não consertar",
+					events: {
+						data: choiceEventsConsequences[2150],
+						probabilities: [100],
+						record: null,
+					},
+				},
+			],
+		},
+	},
+	52: {
+		420: {
+			title: "Batidas na porta",
+			description: `Você ouviu apressadas batidas: há alguém em sua porta.&&\nO que fazer?`,
+			buttons: [
+				{
+					text: "Abrir a porta",
+					events: {
+						data: choiceEventsConsequences[1122],
+						probabilities: [70, 100],
+						record: null,
+					},
+				},
+				{
+					text: "Não abrir a porta",
+					events: {
+						data: choiceEventsConsequences[2122],
+						probabilities: [100],
+						record: null,
+					},
+				},
+			],
+		},
+	},
+	60: {
+		364: {
+			title: "Expedição",
+			description: `Dia de expedição. Saia para procurar suprimentos.&&\nO que fazer?`,
+			buttons: [
+				{
+					text: "Sair",
+					events: {
+						data: choiceEventsConsequences[1115],
+						probabilities: [100],
+						record: null,
+					},
+				},
+				{
+					text: "Não sair",
+					events: {
+						data: null,
+						probabilities: null,
+						record: {
+							text: "Você não foi à expedição.",
+						},
+					},
+				},
+			],
+		},
+	},
+	68: {
+		486: {
+			title: "Batidas na porta",
+			description: `Você ouviu apressadas batidas: há alguém em sua porta.&&\nO que fazer?`,
+			buttons: [
+				{
+					text: "Abrir a porta",
+					events: {
+						data: choiceEventsConsequences[1122],
+						probabilities: [70, 100],
+						record: null,
+					},
+				},
+				{
+					text: "Não abrir a porta",
+					events: {
+						data: choiceEventsConsequences[2122],
+						probabilities: [100],
+						record: null,
+					},
+				},
+			],
+		},
+	},
+	73: {
+		60: {
+			title: "Telefone",
+			description: `Sobre a mesa, o som estridente de seu telefone tocou.&&\nO que fazer?`,
+			buttons: [
+				{
+					text: "Atender",
+					events: {
+						data: choiceEventsConsequences[1173],
+						probabilities: [100],
+						record: null,
+					},
+				},
+				{
+					text: "Não atender",
+					events: {
+						data: null,
+						probabilities: null,
+						record: {
+							text: "Seu telefone tocou, mas você não o atendeu.",
+						},
+					},
+				},
+			],
+		},
+	},
+	75: {
+		360: {
+			title: "Expedição",
+			description: `Dia de expedição. Saia para procurar suprimentos.&&\nO que fazer?`,
+			buttons: [
+				{
+					text: "Sair",
+					events: {
+						data: choiceEventsConsequences[1115],
+						probabilities: [100],
+						record: null,
+					},
+				},
+				{
+					text: "Não sair",
+					events: {
+						data: null,
+						probabilities: null,
+						record: {
+							text: "Você não foi à expedição.",
+						},
+					},
+				},
+			],
+		},
+	},
+	80: {
+		68: {
+			title: "Batidas na porta",
+			description: `Você ouviu apressadas batidas: há alguém em sua porta.&&\nO que fazer?`,
+			buttons: [
+				{
+					text: "Abrir a porta",
+					events: {
+						data: choiceEventsConsequences[1122],
+						probabilities: [70, 100],
+						record: null,
+					},
+				},
+				{
+					text: "Não abrir a porta",
+					events: {
+						data: choiceEventsConsequences[2122],
+						probabilities: [100],
+						record: null,
+					},
+				},
+			],
+		},
+	},
+	86: {
+		601: {
+			title: "Batidas na porta",
+			description: `Você ouviu apressadas batidas: há alguém em sua porta.&&\nO que fazer?`,
+			buttons: [
+				{
+					text: "Abrir a porta",
+					events: {
+						data: choiceEventsConsequences[1122],
+						probabilities: [70, 100],
+						record: null,
+					},
+				},
+				{
+					text: "Não abrir a porta",
+					events: {
+						data: choiceEventsConsequences[2122],
+						probabilities: [100],
+						record: null,
+					},
+				},
+			],
+		},
+	},
+	90: {
+		360: {
+			title: "Expedição",
+			description: `Dia de expedição. Saia para procurar suprimentos.&&\nO que fazer?`,
+			buttons: [
+				{
+					text: "Sair",
+					events: {
+						data: choiceEventsConsequences[1115],
+						probabilities: [100],
+						record: null,
+					},
+				},
+				{
+					text: "Não sair",
+					events: {
+						data: null,
+						probabilities: null,
+						record: {
+							text: "Você não foi à expedição.",
+						},
+					},
+				},
+			],
+		},
+	},
+	97: {
+		367: {
+			title: "Batidas na porta",
+			description: `Você ouviu apressadas batidas: há alguém em sua porta.&&\nO que fazer?`,
+			buttons: [
+				{
+					text: "Abrir a porta",
+					events: {
+						data: choiceEventsConsequences[1122],
+						probabilities: [70, 100],
+						record: null,
+					},
+				},
+				{
+					text: "Não abrir a porta",
+					events: {
+						data: choiceEventsConsequences[2122],
+						probabilities: [100],
+						record: null,
+					},
+				},
+			],
+		},
+	},
+	100: {
+		720: {
+			title: "Telefone",
+			description: `Sobre a mesa, o som estridente de seu telefone tocou.&&\nO que fazer?`,
+			buttons: [
+				{
+					text: "Atender",
+					events: {
+						data: choiceEventsConsequences[1118],
+						probabilities: [100],
+						record: null,
+					},
+				},
+				{
+					text: "Não atender",
+					events: {
+						data: null,
+						probabilities: null,
+						record: {
+							text: "Seu telefone tocou, mas você não o atendeu.",
 						},
 					},
 				},
