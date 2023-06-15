@@ -1,8 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useStatusContext } from "../../contexts";
-import { choiceEvents, events } from "../../database/events.js";
 import { MODAL_TYPES } from "../../enums";
-import { useSave, useRandomEvent } from "../../hooks";
+import { useSave, useRandomEvent, useChoiceEvent, useEvent } from "../../hooks";
 
 import { Modal } from "./Modal.jsx";
 
@@ -11,6 +10,8 @@ export function Tracking() {
 	const eventData = useRef({});
 	const { status } = useStatusContext();
 	const randomEvent = useRandomEvent();
+	const choiceEvent = useChoiceEvent();
+	const event = useEvent();
 	const saveGame = useSave();
 
 	useEffect(() => {
@@ -25,23 +26,21 @@ export function Tracking() {
 
 		if (time === 0) randomEvent.setTimeInterval();
 
-		eventData.current = randomEvent.getEvent(time);
-
-		if (eventData.current) {
-			setModalConfig({ isOpen: true, type: MODAL_TYPES.event });
-			return;
-		}
-
-		if (!events[day] && !choiceEvents[day]) return;
-
-		eventData.current = choiceEvents[day][time];
+		eventData.current = choiceEvent.getEvent({ day, time });
 
 		if (eventData.current) {
 			setModalConfig({ isOpen: true, type: MODAL_TYPES.choiceEvent });
 			return;
 		}
 
-		eventData.current = events[day][time];
+		eventData.current = event.getEvent({ day, time });
+
+		if (eventData.current) {
+			setModalConfig({ isOpen: true, type: MODAL_TYPES.event });
+			return;
+		}
+
+		eventData.current = randomEvent.getEvent(time);
 
 		if (eventData.current) {
 			setModalConfig({ isOpen: true, type: MODAL_TYPES.event });
